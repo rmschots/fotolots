@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "fotolots"
+  },
+  "targets": {
+    "fotolots": {
+      "hosting": {
+        "fotolots": [
+          "fotolots"
+        ]
+      }
+    }
   }
 }

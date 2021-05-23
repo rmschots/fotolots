@@ -7,9 +7,11 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
+          "inlineTemplate": false,
+          "inlineStyle": false,
           "style": "scss",
+          "changeDetection": "OnPush",
+          "displayBlock": true,
           "skipTests": true
         },
         "@schematics/angular:class": {
@@ -107,6 +109,10 @@
           "options": {
             "browserTarget": "fotolots:build"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

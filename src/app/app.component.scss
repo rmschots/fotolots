@@ -1,0 +1,12 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.content {
+  min-height: 100%;
+  height: auto!important;
+}
