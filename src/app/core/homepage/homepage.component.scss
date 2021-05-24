@@ -9,7 +9,7 @@ app-homepage-slider {
   display: block;
 }
 
-h1 {
+.homepage-title {
   position: absolute;
   top: calc(50% + 32px);
   left: 50%;
@@ -18,7 +18,7 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
 }
 
-@media (min-width: 0) and (max-width: 600px) and (orientation: portrait) {
+@media (min-width: 0) and (max-width: 600px) {
   :host {
     padding-top: 56px;
     height: calc(100vh - 56px);

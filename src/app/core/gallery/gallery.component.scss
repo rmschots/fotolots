@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  padding-top: 64px;
+  height: calc(100vh - 64px);
+}
+
+@media (min-width: 0) and (max-width: 600px) {
+  :host {
+    padding-top: 56px;
+    height: calc(100vh - 56px);
+  }
+}
+

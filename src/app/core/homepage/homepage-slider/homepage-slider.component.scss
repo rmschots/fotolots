@@ -9,6 +9,7 @@ swiper {
 .swiper-slide {
   background-position: center;
   background-size: cover;
+  width: 100% !important;
 }
 
 .swiper-slide img {
@@ -18,7 +19,7 @@ swiper {
   object-fit: cover;
 }
 
-@media (min-width: 0) and (max-width: 600px) and (orientation: portrait) {
+@media (min-width: 0) and (max-width: 600px) {
   swiper {
     height: calc(100vh - 56px);
   }

@@ -11,18 +11,28 @@ import { environment } from '../environments/environment';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { HomepageComponent } from './core/homepage/homepage.component';
 import { HomepageSliderComponent } from './core/homepage/homepage-slider/homepage-slider.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { GalleryComponent } from './core/gallery/gallery.component';
+
+const materialModules = [
+    MatToolbarModule,
+    MatButtonModule,
+]
 
 @NgModule({
     declarations: [
         AppComponent,
         HomepageComponent,
-        HomepageSliderComponent
+        HomepageSliderComponent,
+        GalleryComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MatToolbarModule,
+        FlexLayoutModule,
+        ...materialModules,
         SwiperModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAnalyticsModule

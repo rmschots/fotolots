@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-    <mat-toolbar-row>
-        <span>FotoLots</span>
+    <mat-toolbar-row fxLayoutAlign="space-around center">
+        <div fxLayoutAlign="space-around center" class="toolbar-center-wrapper">
+            <a mat-button [routerLink]="['/']"><h1>FotoLots</h1></a>
+            <a mat-button [routerLink]="['/gallery']"><h1>Gallery</h1></a>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 

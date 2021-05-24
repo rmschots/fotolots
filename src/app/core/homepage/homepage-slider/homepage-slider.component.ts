@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import SwiperCore, { EffectFade, Navigation, Pagination } from 'swiper/core';
+import SwiperCore, { EffectFade, Navigation, Autoplay } from 'swiper/core';
 
-SwiperCore.use([EffectFade, Navigation, Pagination]);
+SwiperCore.use([EffectFade, Navigation, Autoplay]);
 
 @Component({
     selector: 'app-homepage-slider',
