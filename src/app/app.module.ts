@@ -20,6 +20,11 @@ const materialModules = [
     MatButtonModule,
 ]
 
+const angularFireModules = [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule
+]
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -33,9 +38,8 @@ const materialModules = [
         BrowserAnimationsModule,
         FlexLayoutModule,
         ...materialModules,
-        SwiperModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAnalyticsModule
+        ...angularFireModules,
+        SwiperModule
     ],
     providers: [],
     bootstrap: [AppComponent]
