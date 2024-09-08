@@ -3,7 +3,7 @@ import { doc, docSnapshots, DocumentSnapshot, Firestore, updateDoc } from '@angu
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup } from '@angular/forms';
 import { distinctUntilChanged, filter, map } from 'rxjs';
-import _ from 'lodash';
+import { isEqual } from 'lodash-es';
 
 type TextSection = {
   description: {
@@ -31,7 +31,7 @@ export class AdminOverMijComponent implements OnInit {
         map((value: DocumentSnapshot<TextSection>) => value.data()),
         filter(value => !!value),
         distinctUntilChanged((previous, current) => {
-          return _.isEqual(previous, current);
+          return isEqual(previous, current);
         }),
         untilDestroyed((this))
       )
