@@ -1,1 +1,31 @@
-<p>admin works!</p>
+<mat-toolbar>
+  <span>Admin</span>
+  <span class="toolbar-spacer"></span>
+  @if (isLoggedIn()) {
+    <span>{{ userEmail() }}</span>
+  } @else {
+    <button mat-raised-button (click)="signInWithGoogle()">
+      Log in
+    </button>
+  }
+</mat-toolbar>
+
+@if (isLoggedIn()) {
+  <mat-tab-group>
+    <mat-tab label="Over mij">
+      <ng-template matTabContent>
+        <app-admin-over-mij></app-admin-over-mij>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Second">
+      <ng-template matTabContent>
+        <app-admin-over-mij></app-admin-over-mij>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Third">
+      <ng-template matTabContent>
+        Content 3
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+}
