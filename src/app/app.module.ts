@@ -27,7 +27,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
       'appId': '1:1024185241823:web:4c66e2aa4dae35799e196a',
       'storageBucket': 'fotolots.appspot.com',
       'apiKey': 'AIzaSyDN_9DiVU6QJZIBJCmF7HStZ1BMPItsQMU',
-      'authDomain': 'fotolots.firebaseapp.com',
+      'authDomain': 'fotolots.web.app',
       'messagingSenderId': '1024185241823',
       'measurementId': 'G-S30T1JDV10'
     })),
