@@ -1,12 +1,12 @@
 <mat-toolbar>
-  <a mat-mini-fab class="home-button" routerLink="/">
+  <a mat-mini-fab class="toolbar-margin-right" routerLink="/">
     <mat-icon>home</mat-icon>
   </a>
-  <span>Admin</span>
+  <span class="toolbar-margin-right">Admin</span>
   <span class="toolbar-spacer"></span>
   @if (authStateLoaded()) {
     @if (isLoggedIn()) {
-      <span>{{ userEmail() }}</span>
+      <span class="toolbar-margin-right hide-overflow">{{ userEmail() }}</span>
       <button mat-stroked-button (click)="signOut()">
         Log out
       </button>
