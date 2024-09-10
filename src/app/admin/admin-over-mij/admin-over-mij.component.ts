@@ -1,51 +1,42 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { doc, docSnapshots, DocumentSnapshot, Firestore, updateDoc } from '@angular/fire/firestore';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControl, FormGroup } from '@angular/forms';
-import { distinctUntilChanged, filter, map } from 'rxjs';
-import { isEqual } from 'lodash-es';
+import { AdminPageService } from '../services/admin-page.service';
 
 type TextSection = {
-  description: {
-    text: string;
-  }
+  description: string;
+};
+
+type TextSectionForm = {
+  description: FormControl<string>
 };
 
 @UntilDestroy()
 @Component({
   selector: 'app-admin-over-mij',
   templateUrl: './admin-over-mij.component.html',
-  styleUrl: './admin-over-mij.component.scss'
+  styleUrl: './admin-over-mij.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminOverMijComponent implements OnInit {
-  #firestore: Firestore = inject(Firestore);
-  fg: FormGroup = new FormGroup({
-    description: new FormControl<string>('')
+  #adminPageService: AdminPageService = inject(AdminPageService);
+  fg: FormGroup<TextSectionForm> = new FormGroup<TextSectionForm>({
+    description: new FormControl<string>('', {nonNullable: true})
   });
+  dataLoaded = signal(false);
 
-  readonly #document = doc(this.#firestore, 'pages', 'overMij');
+  private readonly pageName = 'overMij';
 
   ngOnInit(): void {
-    docSnapshots<TextSection>(this.#document)
-      .pipe(
-        map((value: DocumentSnapshot<TextSection>) => value.data()),
-        filter(value => !!value),
-        distinctUntilChanged((previous, current) => {
-          return isEqual(previous, current);
-        }),
-        untilDestroyed((this))
-      )
-      .subscribe((data: TextSection) => {
-        console.log('got new snapshot', data);
-        if (data) {
-          this.fg.setValue(data);
-        }
+    this.#adminPageService.readPageData<TextSection>(this.pageName)
+      .pipe(untilDestroyed((this)))
+      .subscribe(data => {
+        this.fg.setValue(data);
+        this.dataLoaded.set(true);
       });
   }
 
   submit() {
-    updateDoc(this.#document, this.fg.getRawValue()).then(() => {
-      console.log('successfully updated');
-    });
+    this.#adminPageService.updatePageData(this.pageName, this.fg.getRawValue());
   }
 }

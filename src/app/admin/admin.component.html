@@ -12,19 +12,29 @@
 
 @if (isLoggedIn()) {
   <mat-tab-group>
+    <mat-tab label="Home">
+      <ng-template matTabContent>
+        <app-admin-home></app-admin-home>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Portfolio">
+      <ng-template matTabContent>
+        <app-admin-portfolio></app-admin-portfolio>
+      </ng-template>
+    </mat-tab>
     <mat-tab label="Over mij">
       <ng-template matTabContent>
         <app-admin-over-mij></app-admin-over-mij>
       </ng-template>
     </mat-tab>
-    <mat-tab label="Second">
+    <mat-tab label="Diensten">
       <ng-template matTabContent>
-        <app-admin-over-mij></app-admin-over-mij>
+        <app-admin-diensten></app-admin-diensten>
       </ng-template>
     </mat-tab>
-    <mat-tab label="Third">
+    <mat-tab label="Contact">
       <ng-template matTabContent>
-        Content 3
+        <app-admin-contact></app-admin-contact>
       </ng-template>
     </mat-tab>
   </mat-tab-group>
