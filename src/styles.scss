@@ -47,3 +47,17 @@ body {
 .mat-mdc-tab-body-wrapper {
   flex-grow: 1;
 }
+
+.newlines-as-br {
+  white-space: pre-line;
+}
+
+app-admin {
+  mat-form-field {
+    width: 100%;
+  }
+
+  .save-button {
+    width: 100%;
+  }
+}

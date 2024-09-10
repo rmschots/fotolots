@@ -1,42 +1,26 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AdminPageService } from '../services/admin-page.service';
+import { OverMijPage } from '../../shared/page';
+import { BaseAdminComponent } from '../utils/base-admin-page.component';
 
-type TextSection = {
-  description: string;
-};
-
-type TextSectionForm = {
+type OverMijPageForm = {
   description: FormControl<string>
 };
 
-@UntilDestroy()
 @Component({
   selector: 'app-admin-over-mij',
   templateUrl: './admin-over-mij.component.html',
   styleUrl: './admin-over-mij.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminOverMijComponent implements OnInit {
-  #adminPageService: AdminPageService = inject(AdminPageService);
-  fg: FormGroup<TextSectionForm> = new FormGroup<TextSectionForm>({
-    description: new FormControl<string>('', {nonNullable: true})
-  });
-  dataLoaded = signal(false);
-
-  private readonly pageName = 'overMij';
-
-  ngOnInit(): void {
-    this.#adminPageService.readPageData<TextSection>(this.pageName)
-      .pipe(untilDestroyed((this)))
-      .subscribe(data => {
-        this.fg.setValue(data);
-        this.dataLoaded.set(true);
-      });
+export class AdminOverMijComponent extends BaseAdminComponent<OverMijPage, OverMijPageForm> {
+  override initFormGroup(): FormGroup<OverMijPageForm> {
+    return new FormGroup<OverMijPageForm>({
+      description: new FormControl<string>('', {nonNullable: true})
+    });
   }
 
-  submit() {
-    this.#adminPageService.updatePageData(this.pageName, this.fg.getRawValue());
+  override getPageName(): string {
+    return 'overMij';
   }
 }

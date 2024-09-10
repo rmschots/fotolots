@@ -1,1 +1,4 @@
-<p>home works!</p>
+@if (pageData$ | async; as pageData) {
+  <p class="newlines-as-br">{{pageData.description}}</p>
+}
+

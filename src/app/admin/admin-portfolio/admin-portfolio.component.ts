@@ -1,4 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { BaseAdminComponent } from '../utils/base-admin-page.component';
+import { PortfolioPage } from '../../shared/page';
+
+type PortfolioPageForm = {
+  description: FormControl<string>
+}
 
 @Component({
   selector: 'app-admin-portfolio',
@@ -6,6 +13,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './admin-portfolio.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminPortfolioComponent {
+export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, PortfolioPageForm> {
+  override initFormGroup(): FormGroup<PortfolioPageForm> {
+    return new FormGroup<PortfolioPageForm>({
+      description: new FormControl<string>('', {nonNullable: true})
+    });
+  }
 
+  override getPageName(): string {
+    return 'portfolio';
+  }
 }

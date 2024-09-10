@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
 
   userEmail: WritableSignal<string | undefined> = signal(undefined);
   isLoggedIn = computed(() => !!this.userEmail());
+  authStateLoaded = signal(false);
 
   ngOnInit(): void {
     this.initAuth();
@@ -31,6 +32,9 @@ export class AdminComponent implements OnInit {
   }
 
   private initAuth() {
+    this.auth.authStateReady().then(() => {
+      this.authStateLoaded.set(true);
+    })
     this.auth.onAuthStateChanged(value => {
         console.log('authStateChanged', value);
         if (value?.email === null) {

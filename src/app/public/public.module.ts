@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MatListModule } from '@angular/material/list';
 import { DienstenComponent } from './diensten/diensten.component';
 import { OverMijComponent } from './over-mij/over-mij.component';
+import { PageService } from './services/page.service';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { OverMijComponent } from './over-mij/over-mij.component';
     PublicRoutingModule,
     MatSidenavModule,
     MatListModule
-  ]
+  ],
+  providers: [PageService]
 })
 export class PublicModule {
 }

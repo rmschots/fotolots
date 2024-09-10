@@ -1,10 +1,10 @@
 @if (dataLoaded()) {
-  <form [formGroup]="fg" (submit)="submit()">
+  <form [formGroup]="fg" (submit)="submitForm()">
     <mat-card appearance="outlined">
       <mat-card-content>
         <mat-form-field>
           <mat-label>Over mij</mat-label>
-          <textarea matInput formControlName="description"></textarea>
+          <textarea matInput rows="10" formControlName="description"></textarea>
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>

@@ -1,41 +1,36 @@
 <mat-toolbar>
+  <a mat-mini-fab class="home-button" routerLink="/">
+    <mat-icon>home</mat-icon>
+  </a>
   <span>Admin</span>
   <span class="toolbar-spacer"></span>
-  @if (isLoggedIn()) {
-    <span>{{ userEmail() }}</span>
-  } @else {
-    <button mat-raised-button (click)="signInWithGoogle()">
-      Log in
-    </button>
+  @if (authStateLoaded()) {
+    @if (isLoggedIn()) {
+      <span>{{ userEmail() }}</span>
+    } @else {
+      <button mat-raised-button (click)="signInWithGoogle()">
+        Log in
+      </button>
+    }
   }
 </mat-toolbar>
 
 @if (isLoggedIn()) {
   <mat-tab-group>
     <mat-tab label="Home">
-      <ng-template matTabContent>
-        <app-admin-home></app-admin-home>
-      </ng-template>
+      <app-admin-home></app-admin-home>
     </mat-tab>
     <mat-tab label="Portfolio">
-      <ng-template matTabContent>
-        <app-admin-portfolio></app-admin-portfolio>
-      </ng-template>
+      <app-admin-portfolio></app-admin-portfolio>
     </mat-tab>
     <mat-tab label="Over mij">
-      <ng-template matTabContent>
-        <app-admin-over-mij></app-admin-over-mij>
-      </ng-template>
+      <app-admin-over-mij></app-admin-over-mij>
     </mat-tab>
     <mat-tab label="Diensten">
-      <ng-template matTabContent>
-        <app-admin-diensten></app-admin-diensten>
-      </ng-template>
+      <app-admin-diensten></app-admin-diensten>
     </mat-tab>
     <mat-tab label="Contact">
-      <ng-template matTabContent>
-        <app-admin-contact></app-admin-contact>
-      </ng-template>
+      <app-admin-contact></app-admin-contact>
     </mat-tab>
   </mat-tab-group>
 }

@@ -16,6 +16,7 @@ import { AdminPortfolioComponent } from './admin-portfolio/admin-portfolio.compo
 import { AdminDienstenComponent } from './admin-diensten/admin-diensten.component';
 import { AdminContactComponent } from './admin-contact/admin-contact.component';
 import { AdminPageService } from './services/admin-page.service';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { AdminPageService } from './services/admin-page.service';
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [AdminPageService]
 })

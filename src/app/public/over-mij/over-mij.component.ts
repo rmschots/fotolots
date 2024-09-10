@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { PageService } from '../services/page.service';
+import { OverMijPage } from '../../shared/page';
 
 @Component({
   selector: 'app-over-mij',
@@ -7,5 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OverMijComponent {
-
+  #pageService: PageService = inject(PageService);
+  pageData$ = this.#pageService.readPageData<OverMijPage>('overMij');
 }
