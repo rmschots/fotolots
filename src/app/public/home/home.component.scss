@@ -1,3 +1,28 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-full-screen {
+  height: calc(100vh - var(--toolbar-height));
+  width: 100%;
+  background: url("/home-background-80.webp") no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+section {
+  padding: 32px;
+  width: calc(100% - 64px);
+}
+
+.website-title {
+  font-size: calc(8vh + 8vw);
+  font-family: "Cookie", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: cornflowerblue;
+  position: absolute;
+  left: calc(-47px + 15vw);
+  bottom: calc(150px + 5vw);
 }

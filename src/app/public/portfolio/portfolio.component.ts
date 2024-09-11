@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageService } from '../services/page.service';
 import { OverMijPage } from '../../shared/page';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @Component({
   selector: 'app-portfolio',

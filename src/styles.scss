@@ -36,12 +36,20 @@ $fotolots-theme: mat.define-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
-  height: 100%;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  --toolbar-height: var(--mat-toolbar-standard-height);
+}
+@media (max-width: 599px) {
+  body {
+    --toolbar-height: var(--mat-toolbar-mobile-height);
+  }
 }
 
 .mat-mdc-tab-body-wrapper {

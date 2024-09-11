@@ -1,14 +1,38 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
-      <a mat-list-item routerLink="/portfolio">Portfolio</a>
-      <a mat-list-item routerLink="/over-mij">Over mij</a>
-      <a mat-list-item routerLink="/diensten">Diensten</a>
-      <a mat-list-item routerLink="/contact">Contact</a>
-    </mat-nav-list>
-  </mat-drawer>
-  <mat-drawer-content>
+@if (isMobile()) {
+
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer mode="over">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/" (click)="drawer.close()">Home</a>
+        <a mat-list-item routerLink="/portfolio" (click)="drawer.close()">Portfolio</a>
+        <a mat-list-item routerLink="/over-mij" (click)="drawer.close()">Over mij</a>
+        <a mat-list-item routerLink="/diensten" (click)="drawer.close()">Diensten</a>
+        <a mat-list-item routerLink="/contact" (click)="drawer.close()">Contact</a>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar class="mobile-toolbar">
+        <h4 style="position: absolute;width: calc(100% - 32px);text-align: center;">Fotolots</h4>
+        <button mat-icon-button (click)="drawer.open()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+} @else {
+  <mat-toolbar class="desktop-toolbar">
+    <h4 style="position: absolute; left: 32px">Fotolots</h4>
+
+    <a mat-button routerLink="/"><h4>Home</h4></a>
+    <a mat-button routerLink="/portfolio"><h4>Portfolio</h4></a>
+    <a mat-button routerLink="/over-mij"><h4>Over mij</h4></a>
+    <a mat-button routerLink="/diensten"><h4>Diensten</h4></a>
+    <a mat-button routerLink="/contact"><h4>Contact</h4></a>
+  </mat-toolbar>
+  <div class="content">
     <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </div>
+}

@@ -1,4 +1,10 @@
-@if (pageData$ | async; as pageData) {
-  <p class="newlines-as-br">{{pageData.description}}</p>
-}
+<div class="background-full-screen">
+  <div class="website-title">Fotolots</div>
+</div>
+
+<section>
+  @if (pageData$ | async; as pageData) {
+    <p class="newlines-as-br">{{ pageData.description }}</p>
+  }
+</section>
 

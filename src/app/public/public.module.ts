@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
@@ -11,6 +11,9 @@ import { MatListModule } from '@angular/material/list';
 import { DienstenComponent } from './diensten/diensten.component';
 import { OverMijComponent } from './over-mij/over-mij.component';
 import { PageService } from './services/page.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -26,9 +29,13 @@ import { PageService } from './services/page.service';
     SharedModule,
     PublicRoutingModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  providers: [PageService]
+  providers: [PageService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PublicModule {
 }
