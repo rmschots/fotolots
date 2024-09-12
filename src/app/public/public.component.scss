@@ -16,10 +16,11 @@
 .mobile-toolbar {
   display: flex;
   position: relative;
+  z-index: 99999;
 }
 
 mat-toolbar {
-  background-color: #6495ed1f;
+  background-color: rgba(100, 149, 237, 0.5);
 }
 
 mat-drawer-container {
