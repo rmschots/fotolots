@@ -41,4 +41,15 @@ export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageFor
   override getPageName(): string {
     return 'home';
   }
+
+  addDienst() {
+    this.fg.controls.diensten.push(new FormGroup<DienstForm>({
+      category: new FormControl<string>('', {nonNullable: true}),
+      text: new FormControl<string>('', {nonNullable: true})
+    }));
+  }
+
+  removeDienst(index: number) {
+    this.fg.controls.diensten.removeAt(index)
+  }
 }
