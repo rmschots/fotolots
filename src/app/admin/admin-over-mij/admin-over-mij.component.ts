@@ -14,6 +14,9 @@ type OverMijPageForm = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminOverMijComponent extends BaseAdminComponent<OverMijPage, OverMijPageForm> {
+  override prepareFormGroupForData(data: OverMijPage): void {
+  }
+
   override initFormGroup(): FormGroup<OverMijPageForm> {
     return new FormGroup<OverMijPageForm>({
       description: new FormControl<string>('', {nonNullable: true})

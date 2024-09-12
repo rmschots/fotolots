@@ -4,8 +4,27 @@
       <mat-card-content>
         <mat-form-field>
           <mat-label>Over mij</mat-label>
-          <textarea matInput rows="10" formControlName="description"></textarea>
+          <textarea matInput rows="5" formControlName="welkomSectieText"></textarea>
         </mat-form-field>
+
+        <div formArrayName="diensten">
+          <button mat-flat-button>Dienst toevoegen</button>
+          @for (dienst of fg.controls.diensten.controls; track dienst.controls.text.value) {
+            <div [formGroup]="dienst">
+              <mat-form-field>
+                <mat-label>Dienst</mat-label>
+                <input matInput formControlName="category" >
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Over mij</mat-label>
+                <textarea matInput rows="5" formControlName="text"></textarea>
+              </mat-form-field>
+            </div>
+          }
+        </div>
+
+
+
       </mat-card-content>
       <mat-card-actions>
         <button mat-flat-button class="save-button" type="submit">SAVE</button>

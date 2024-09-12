@@ -1,4 +1,15 @@
-@if (pageData$ | async; as pageData) {
-  <p class="newlines-as-br">{{pageData.description}}</p>
-}
+<section id="welcome-section">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Contact</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      @if (pageData$ | async; as pageData) {
+        <p class="newlines-as-br">{{ pageData.description }}</p>
+      }
+    </mat-card-content>
+  </mat-card>
+</section>
 

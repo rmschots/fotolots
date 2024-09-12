@@ -14,6 +14,10 @@ type DienstenPageForm = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminDienstenComponent extends BaseAdminComponent<DienstenPage, DienstenPageForm> {
+  override prepareFormGroupForData(data: DienstenPage): void {
+
+  }
+
   override initFormGroup(): FormGroup<DienstenPageForm> {
     return new FormGroup<DienstenPageForm>({
       description: new FormControl<string>('', {nonNullable: true})

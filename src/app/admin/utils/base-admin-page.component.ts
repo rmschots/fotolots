@@ -15,12 +15,15 @@ export abstract class BaseAdminComponent<T extends ɵFormGroupRawValue<FT>, FT e
 
   abstract initFormGroup(): FormGroup<FT>;
 
+  abstract prepareFormGroupForData(data: T): void;
+
   abstract getPageName(): string;
 
   ngOnInit(): void {
     this.#adminPageService.readPageData<T>(this.getPageName())
       .pipe(untilDestroyed((this)))
       .subscribe(data => {
+        this.prepareFormGroupForData(data);
         this.fg.setValue(data);
         this.dataLoaded.set(true);
       });

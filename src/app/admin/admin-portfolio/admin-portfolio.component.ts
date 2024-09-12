@@ -14,6 +14,9 @@ type PortfolioPageForm = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, PortfolioPageForm> {
+  override prepareFormGroupForData(data: PortfolioPage): void {
+
+  }
   override initFormGroup(): FormGroup<PortfolioPageForm> {
     return new FormGroup<PortfolioPageForm>({
       description: new FormControl<string>('', {nonNullable: true})

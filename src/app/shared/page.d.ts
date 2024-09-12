@@ -1,5 +1,9 @@
 export type HomePage = {
-  description: string;
+  welkomSectieText: string;
+  diensten: {
+    category: string;
+    text: string;
+  }[]
 }
 
 export type PortfolioPage = {

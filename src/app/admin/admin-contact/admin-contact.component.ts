@@ -14,6 +14,9 @@ type ContactPageForm = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminContactComponent extends BaseAdminComponent<ContactPage, ContactPageForm> {
+  override prepareFormGroupForData(data: ContactPage): void {
+  }
+
   override initFormGroup(): FormGroup<ContactPageForm> {
     return new FormGroup<ContactPageForm>({
       description: new FormControl<string>('', {nonNullable: true})

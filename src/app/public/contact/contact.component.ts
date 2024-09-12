@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageService } from '../services/page.service';
-import { OverMijPage } from '../../shared/page';
+import { ContactPage } from '../../shared/page';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +10,6 @@ import { OverMijPage } from '../../shared/page';
 })
 export class ContactComponent {
   #pageService: PageService = inject(PageService);
-  pageData$ = this.#pageService.readPageData<OverMijPage>('contact');
+  pageData$ = this.#pageService.readPageData<ContactPage>('contact');
 
 }

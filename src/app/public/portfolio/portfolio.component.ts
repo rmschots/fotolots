@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageService } from '../services/page.service';
-import { OverMijPage } from '../../shared/page';
+import { PortfolioPage } from '../../shared/page';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -13,6 +13,6 @@ register();
 })
 export class PortfolioComponent {
   #pageService: PageService = inject(PageService);
-  pageData$ = this.#pageService.readPageData<OverMijPage>('portfolio');
+  pageData$ = this.#pageService.readPageData<PortfolioPage>('portfolio');
 
 }

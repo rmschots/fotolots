@@ -1,10 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { BaseAdminComponent } from '../utils/base-admin-page.component';
 import { HomePage } from '../../shared/page';
 
+type DienstForm = {
+  category: FormControl<string>;
+  text: FormControl<string>;
+}
+
 type HomePageForm = {
-  description: FormControl<string>
+  welkomSectieText: FormControl<string>;
+  diensten: FormArray<FormGroup<DienstForm>>;
 };
 
 @Component({
@@ -16,8 +22,20 @@ type HomePageForm = {
 export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageForm> {
   override initFormGroup(): FormGroup<HomePageForm> {
     return new FormGroup<HomePageForm>({
-      description: new FormControl<string>('', {nonNullable: true})
+      welkomSectieText: new FormControl<string>('', {nonNullable: true}),
+      diensten: new FormArray<FormGroup<DienstForm>>([])
     });
+  }
+
+  override prepareFormGroupForData(data: HomePage): void {
+    const dienstenFormArray = this.fg.get('diensten') as FormArray<FormGroup<DienstForm>>;
+    dienstenFormArray.clear();
+    data.diensten.forEach(() => {
+      dienstenFormArray.push(new FormGroup<DienstForm>({
+        category: new FormControl<string>('', {nonNullable: true}),
+        text: new FormControl<string>('', {nonNullable: true})
+      }));
+    })
   }
 
   override getPageName(): string {

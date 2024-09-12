@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PageService } from '../services/page.service';
-import { OverMijPage } from '../../shared/page';
+import { HomePage } from '../../shared/page';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,12 @@ import { OverMijPage } from '../../shared/page';
 })
 export class HomeComponent {
   #pageService: PageService = inject(PageService);
-  pageData$ = this.#pageService.readPageData<OverMijPage>('home');
+  pageData$ = this.#pageService.readPageData<HomePage>('home');
 
+  scrollToWelcome() {
+    const welcomeSection = document.getElementById('welcome-section');
+    if (welcomeSection) {
+      welcomeSection.scrollIntoView({behavior: 'smooth'});
+    }
+  }
 }

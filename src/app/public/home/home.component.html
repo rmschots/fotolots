@@ -1,10 +1,109 @@
 <div class="background-full-screen">
   <div class="website-title">Fotolots</div>
+  <div class="scroll-indicator" (click)="scrollToWelcome()" (keydown.enter)="scrollToWelcome()" tabindex="0  ">
+    <span class="scroll-text">scroll om te beginnen</span>
+    <span class="scroll-arrow">↓</span>
+  </div>
 </div>
 
-<section>
-  @if (pageData$ | async; as pageData) {
-    <p class="newlines-as-br">{{ pageData.description }}</p>
-  }
+<section id="welcome-section">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Welkom</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      @if (pageData$ | async; as pageData) {
+        <p class="newlines-as-br">{{ pageData.welkomSectieText }}</p>
+      }
+    </mat-card-content>
+  </mat-card>
 </section>
 
+<section id="diensten-section">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Mijn diensten</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="diensten-content">
+      @if (pageData$ | async; as pageData) {
+        @for (dienst of pageData.diensten; track dienst.category) {
+          <div class="dienst">
+            <h1>{{ dienst.category }}</h1>
+            <p>{{ dienst.text }}</p>
+            <a mat-raised-button routerLink="/diensten">Ontdek meer</a>
+          </div>
+        }
+      }
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section id="contact-section">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Contact Informatie</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <mat-icon>person</mat-icon>
+          <div class="contact-details">
+            <h3>Naam</h3>
+            <p>Charlotte Mangelschots</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>email</mat-icon>
+          <div class="contact-details">
+            <h3>E-mail</h3>
+            <p><a href="mailto:fotolots@gmail.com">fotolots&#64;gmail.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>chat</mat-icon>
+          <div class="contact-details">
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/0473592221">0473 59 22 21</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>phone</mat-icon>
+          <div class="contact-details">
+            <h3>Telefoon</h3>
+            <p><a href="tel:0473592221">0473 59 22 21</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>photo_camera</mat-icon>
+          <div class="contact-details">
+            <h3>Instagram</h3>
+            <p><a href="https://www.instagram.com/fotolots/" target="_blank">&#64;fotolots</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>account_balance</mat-icon>
+          <div class="contact-details">
+            <h3>Betalingen</h3>
+            <p>BE 1013.104.028</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <mat-icon>location_on</mat-icon>
+          <div class="contact-details">
+            <h3>Adres</h3>
+            <p><a href="https://www.google.com/maps/search/?api=1&query=Edward+de+Jansstraat+8,+8200+Brugge" target="_blank">
+              Edward de Jansstraat 8<br>
+              8200 Brugge
+            </a></p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
