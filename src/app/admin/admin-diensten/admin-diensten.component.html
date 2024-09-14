@@ -1,14 +1,46 @@
 @if (dataLoaded()) {
-  <form [formGroup]="fg" (submit)="submitForm()">
+  <form [formGroup]="fg">
     <mat-card appearance="outlined">
       <mat-card-content>
-        <mat-form-field>
-          <mat-label>Diensten tekst</mat-label>
-          <textarea matInput rows="10" formControlName="description"></textarea>
-        </mat-form-field>
+        <div formArrayName="diensten">
+          <button mat-flat-button (click)="addDienst()">Dienst toevoegen</button>
+          @for (dienst of fg.controls.diensten.controls; track dienst.controls.name; let index = $index) {
+            <div class="dienst" [formGroup]="dienst">
+              <mat-form-field>
+                <mat-label>Dienst</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>omschrijving</mat-label>
+                <textarea matInput rows="5" formControlName="description"></textarea>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>url</mat-label>
+                <input matInput formControlName="imageUrl">
+              </mat-form-field>
+
+              <!-- Inclusions section -->
+              <div formArrayName="inclusions">
+                <h4>Inclusief</h4>
+                @for (inclusion of dienst.controls.inclusions.controls; track inclusion; let i = $index) {
+                  <div class="inclusion">
+                    <mat-form-field>
+                      <input matInput [formControlName]="i" placeholder="Inclusion">
+                    </mat-form-field>
+                    <button mat-icon-button (click)="removeInclusion(index, i)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                }
+                <button mat-button (click)="addInclusion(index)">Inclusief toevoegen</button>
+              </div>
+              <button mat-flat-button (click)="removeDienst(index)">Dienst verwijderen</button>
+            </div>
+          }
+        </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button class="save-button" type="submit">SAVE</button>
+        <button mat-flat-button class="save-button" (click)="submitForm()">SAVE</button>
       </mat-card-actions>
     </mat-card>
   </form>

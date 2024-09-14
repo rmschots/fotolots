@@ -1,3 +1,62 @@
 :host {
   display: block;
 }
+
+.photography-services {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mat-display-2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.service-category {
+  margin-bottom: 40px;
+  overflow: hidden; /* This will ensure the image doesn't overflow the rounded corners */
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-content {
+  order: 2;
+  padding: 16px; /* Add some padding to the text content */
+}
+
+.image-container {
+  order: 1;
+}
+
+.image-container img {
+  width: 100%;
+  max-height: 200px;
+  height: auto;
+  object-fit: cover;
+  display: block; /* Remove any default inline spacing */
+}
+
+@media (min-width: 800px) {
+  .card-content {
+    flex-direction: row;
+  }
+
+  .text-content {
+    flex: 1;
+    order: 1;
+  }
+
+  .image-container {
+    flex: 0 0 400px;
+    order: 2;
+  }
+
+  .image-container img {
+    height: 100%;
+    max-height: unset;
+  }
+}

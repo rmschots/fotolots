@@ -35,7 +35,7 @@ export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageFor
         category: new FormControl<string>('', {nonNullable: true}),
         text: new FormControl<string>('', {nonNullable: true})
       }));
-    })
+    });
   }
 
   override getPageName(): string {

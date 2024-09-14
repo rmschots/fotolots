@@ -1,5 +1,5 @@
 @if (dataLoaded()) {
-  <form [formGroup]="fg" (submit)="submitForm()">
+  <form [formGroup]="fg">
     <mat-card appearance="outlined">
       <mat-card-content>
         <mat-form-field>
@@ -8,7 +8,7 @@
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button class="save-button" type="submit">SAVE</button>
+        <button mat-flat-button class="save-button" (click)="submitForm()">SAVE</button>
       </mat-card-actions>
     </mat-card>
   </form>

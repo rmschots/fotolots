@@ -15,7 +15,12 @@ export type OverMijPage = {
 }
 
 export type DienstenPage = {
-  description: string;
+  diensten: {
+    name: string;
+    imageUrl: string;
+    description: string;
+    inclusions: string[];
+  }[]
 }
 
 export type ContactPage = {

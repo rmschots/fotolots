@@ -1,4 +1,31 @@
-@if (pageData$ | async; as pageData) {
-  <p class="newlines-as-br">{{pageData.description}}</p>
-}
-
+<div class="photography-services">
+  <h1 class="mat-display-2">Diensten</h1>
+  @if (pageData$ | async; as pageData) {
+    @for (category of pageData.diensten; track category.name) {
+      <mat-card appearance="outlined" class="service-category">
+        <div class="card-content">
+          <div class="text-content">
+            <mat-card-header>
+              <mat-card-title>{{ category.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ category.description }}</p>
+              <h3 class="mat-h3">Wat is inclusief?</h3>
+              <mat-list>
+                @for (inclusion of category.inclusions; track inclusion) {
+                  <mat-list-item>
+                    <mat-icon matListItemIcon>check</mat-icon>
+                    <span matListItemTitle>{{ inclusion }}</span>
+                  </mat-list-item>
+                }
+              </mat-list>
+            </mat-card-content>
+          </div>
+          <div class="image-container">
+            <img mat-card-image [src]="category.imageUrl" [alt]="category.name">
+          </div>
+        </div>
+      </mat-card>
+    }
+  }
+</div>
