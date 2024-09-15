@@ -121,7 +121,7 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
   }
 
   generateUrl(category: string, pictureId: string) {
-    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_720x480.avif?alt=media`;
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_600x900.avif?alt=media`;
   }
 
   getAlternativePicture(event: ErrorEvent, category: string, pictureId: string) {
