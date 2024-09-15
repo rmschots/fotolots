@@ -2,11 +2,13 @@
   @for (category of pageData.categories; track category.name) {
     <h1>{{ category.name }}</h1>
     <lightgallery [settings]="settings">
-      @for (picture of category.pictures; track picture.id) {
-        <a [href]="generateUrl(category.name, picture.id)">
-          <img [alt]="picture.originalFilename" [src]="generateUrl(category.name, picture.id)"/>
-        </a>
-      }
+      <masonry-layout [attr.cols]="columns()" gap="8">
+        @for (picture of category.pictures; track picture.id) {
+          <a class="item" [href]="generateUrl(category.name, picture.id)">
+            <img [alt]="picture.originalFilename" [src]="generateUrl(category.name, picture.id)"/>
+          </a>
+        }
+      </masonry-layout>
     </lightgallery>
   }
 }
