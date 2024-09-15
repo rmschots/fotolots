@@ -17,6 +17,12 @@ import { AdminDienstenComponent } from './admin-diensten/admin-diensten.componen
 import { AdminContactComponent } from './admin-contact/admin-contact.component';
 import { AdminPageService } from './services/admin-page.service';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UploadDialogComponent } from './admin-portfolio/upload-dialog/upload-dialog.component';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { AddCategoryDialogComponent } from './admin-portfolio/add-category-dialog/add-category-dialog.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -26,7 +32,9 @@ import { MatIconModule } from '@angular/material/icon';
     AdminHomeComponent,
     AdminPortfolioComponent,
     AdminDienstenComponent,
-    AdminContactComponent
+    AdminContactComponent,
+    UploadDialogComponent,
+    AddCategoryDialogComponent
   ],
   imports: [
     SharedModule,
@@ -39,7 +47,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatListModule,
+    MatProgressBarModule,
+    DragDropModule
   ],
   providers: [AdminPageService]
 })

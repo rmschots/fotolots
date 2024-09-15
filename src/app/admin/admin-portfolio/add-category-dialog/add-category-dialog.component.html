@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Add New Category</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput [formControl]="categoryNameControl" placeholder="Category Name">
+    <mat-error *ngIf="categoryNameControl.hasError('required')">Category name is required</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [disabled]="categoryNameControl.invalid" (click)="onSubmit()">Add</button>
+</mat-dialog-actions>

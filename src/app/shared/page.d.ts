@@ -7,7 +7,13 @@ export type HomePage = {
 }
 
 export type PortfolioPage = {
-  description: string;
+  categories: {
+    name: string;
+    pictures: {
+      id: string;
+      originalFilename: string;
+    }[]
+  }[];
 }
 
 export type OverMijPage = {

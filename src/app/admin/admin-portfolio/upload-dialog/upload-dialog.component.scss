@@ -1,0 +1,43 @@
+.drop-zone {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  transition: border 0.3s ease-in-out;
+}
+
+.drop-zone.dragging {
+  border-color: #2196F3;
+}
+
+.file-item {
+  display: flex !important;
+  align-items: center;
+  padding: 8px 0;
+  position: relative;
+}
+
+.file-info {
+  flex-grow: 1;
+  overflow: hidden;
+  margin-right: 48px; // Make space for the delete button
+}
+
+.file-name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.delete-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+mat-progress-bar {
+  width: 100%;
+}

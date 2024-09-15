@@ -1,15 +1,42 @@
-@if (dataLoaded()) {
-  <form [formGroup]="fg" (submit)="submitForm()">
-    <mat-card appearance="outlined">
-      <mat-card-content>
-        <mat-form-field>
-          <mat-label>Portfolio tekst</mat-label>
-          <textarea matInput rows="10" formControlName="description"></textarea>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button class="save-button" (click)="submitForm()">SAVE</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-}
+<form [formGroup]="fg">
+  <div formArrayName="categories" cdkDropList (cdkDropListDropped)="onCategoryDrop($event)">
+    @for (category of fg.controls.categories.controls; track category.controls.name; let i = $index) {
+      <div [formGroupName]="i" class="category-container" cdkDrag>
+        <div class="category-drag-handle" cdkDragHandle>
+          <mat-icon>drag_indicator</mat-icon>
+        </div>
+        <h3>{{ category.get('name')?.value }}</h3>
+        <button mat-raised-button class="add-photos-button" (click)="addPhotosToCategory(i)">Add Photos</button>
+        <button mat-raised-button class="remove-category-button" (click)="removeCategory(i)">Remove Category</button>
+
+        <div formArrayName="pictures" class="pictures-container" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onPictureDrop($event, i)">
+          @for (picture of category.controls.pictures.controls; track picture.controls.id; let j = $index) {
+            <div [formGroupName]="j" class="picture-item" cdkDrag>
+              <div class="picture-drag-placeholder" *cdkDragPlaceholder></div>
+              <img [src]="generateUrl(category.controls.name.value, picture.controls.id.value)"
+                   [alt]="picture.get('originalFilename')?.value"
+                   (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
+                   class="thumbnail">
+              <span class="filename">{{ picture.get('originalFilename')?.value }}</span>
+              <button mat-icon-button class="remove-photo-button" (click)="removePhotoFromCategory(i, j)">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+              <ng-template cdkDragPreview>
+                <div class="drag-preview">
+                  <img [src]="generateUrl(category.controls.name.value, picture.controls.id.value)"
+                       [alt]="picture.get('originalFilename')?.value"
+                       (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
+                       class="thumbnail">
+                  <span class="filename">{{ picture.get('originalFilename')?.value }}</span>
+                </div>
+              </ng-template>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <button mat-raised-button class="add-category-button" (click)="addCategory()">Add Category</button>
+</form>
