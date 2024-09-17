@@ -13,7 +13,7 @@
           @for (picture of category.controls.pictures.controls; track picture.controls.id; let j = $index) {
             <div [formGroupName]="j" class="picture-item" cdkDrag>
               <div class="picture-drag-placeholder" *cdkDragPlaceholder></div>
-              <img [src]="generateUrl(category.controls.name.value, picture.controls.id.value)"
+              <img [src]="generateUrlSmall(category.controls.name.value, picture.controls.id.value)"
                    [alt]="picture.get('originalFilename')?.value"
                    (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
                    class="thumbnail">
@@ -24,7 +24,7 @@
 
               <ng-template cdkDragPreview>
                 <div class="drag-preview">
-                  <img [src]="generateUrl(category.controls.name.value, picture.controls.id.value)"
+                  <img [src]="generateUrlSmall(category.controls.name.value, picture.controls.id.value)"
                        [alt]="picture.get('originalFilename')?.value"
                        (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
                        class="thumbnail">

@@ -14,26 +14,26 @@ const routes: Routes = [{
     {
       path: '',
       pathMatch: 'full',
-      title: 'Home',
+      title: 'Home - Fotolots',
       component: HomeComponent
     }, {
       path: 'portfolio',
-      title: 'Portfolio',
+      title: 'Portfolio - Fotolots',
       component: PortfolioComponent
     },
     {
       path: 'over-mij',
-      title: 'Over mij',
+      title: 'Over mij - Fotolots',
       component: OverMijComponent
     },
     {
       path: 'diensten',
-      title: 'Diensten',
+      title: 'Diensten - Fotolots',
       component: DienstenComponent
     },
     {
       path: 'contact',
-      title: 'Contact',
+      title: 'Contact - Fotolots',
       component: ContactComponent
     }
   ]

@@ -18,13 +18,22 @@ export class PortfolioComponent {
   pageData$ = this.#pageService.readPageData<PortfolioPage>('portfolio');
   columns = signal(this.determineColumnCount());
 
-  generateUrl(category: string, pictureId: string) {
+  generateUrlSmall(category: string, pictureId: string) {
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_150x150.avif?alt=media`;
+  }
+
+  generateUrlMedium(category: string, pictureId: string) {
     return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_600x900.avif?alt=media`;
+  }
+
+  generateUrlBig(category: string, pictureId: string) {
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_1920x1920.avif?alt=media`;
   }
 
   settings: LightGallerySettings = {
     counter: false,
-    selector: '.item'
+    selector: '.item',
+    download: false
   };
 
   @HostListener('window:resize')

@@ -1,14 +1,23 @@
-@if (pageData$ | async; as pageData) {
-  @for (category of pageData.categories; track category.name) {
-    <h1>{{ category.name }}</h1>
-    <lightgallery [settings]="settings">
-      <masonry-layout [attr.cols]="columns()" gap="8">
-        @for (picture of category.pictures; track picture.id) {
-          <a class="item" [href]="generateUrl(category.name, picture.id)">
-            <img [alt]="picture.originalFilename" [src]="generateUrl(category.name, picture.id)"/>
-          </a>
-        }
-      </masonry-layout>
-    </lightgallery>
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" [preserveContent]="true">
+  @if (pageData$ | async; as pageData) {
+    @for (category of pageData.categories; track category.name) {
+      <mat-tab [label]="category.name">
+        <ng-template matTabContent>
+          <lightgallery [settings]="settings">
+            <masonry-layout [attr.cols]="columns()" gap="8">
+              @for (picture of category.pictures; track picture.id) {
+                <a class="item" [href]="generateUrlBig(category.name, picture.id)">
+                  <app-optimized-image
+                    [src]="generateUrlMedium(category.name, picture.id)"
+                    [placeholderSrc]="generateUrlSmall(category.name, picture.id)"
+                    [alt]="picture.originalFilename"
+                  ></app-optimized-image>
+                </a>
+              }
+            </masonry-layout>
+          </lightgallery>
+        </ng-template>
+      </mat-tab>
+    }
   }
-}
+</mat-tab-group>

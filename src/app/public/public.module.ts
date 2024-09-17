@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { LightgalleryModule } from 'lightgallery/angular';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OptimizedImageComponent } from './shared/optimized-image/optimized-image.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { LightgalleryModule } from 'lightgallery/angular';
     PortfolioComponent,
     ContactComponent,
     DienstenComponent,
-    OverMijComponent
+    OverMijComponent,
+    OptimizedImageComponent
   ],
   imports: [
     SharedModule,
@@ -36,6 +39,7 @@ import { LightgalleryModule } from 'lightgallery/angular';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatTabsModule,
     LightgalleryModule
   ],
   providers: [PageService],

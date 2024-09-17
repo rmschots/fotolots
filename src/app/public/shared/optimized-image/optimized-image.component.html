@@ -1,0 +1,15 @@
+<div class="image-container">
+  <img
+    [src]="placeholderSrc()"
+    [alt]="alt()"
+    class="placeholder"
+    [class.hidden]="loaded()"
+  />
+  <img
+    [attr.data-src]="src()"
+    [alt]="alt()"
+    class="lazy"
+    [class.loaded]="loaded()"
+    (load)="onImageLoad()"
+  />
+</div>
