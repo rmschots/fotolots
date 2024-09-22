@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<section id="welcome-section">
+<section #welcomeSection id="welcome-section">
   <mat-card appearance="outlined">
     <mat-card-header>
       <mat-card-title-group>
@@ -32,9 +32,14 @@
       @if (pageData$ | async; as pageData) {
         @for (dienst of pageData.diensten; track dienst.category) {
           <div class="dienst">
-            <h1>{{ dienst.category }}</h1>
-            <p>{{ dienst.text }}</p>
-            <a mat-raised-button routerLink="/diensten">Ontdek meer</a>
+            <div class="dienst-image">
+              <img [src]="generateUrlMedium(dienst.imageId)" [alt]="dienst.category">
+            </div>
+            <div class="dienst-info">
+              <h2>{{ dienst.category }}</h2>
+              <p>{{ dienst.text }}</p>
+              <a mat-raised-button routerLink="/diensten">Ontdek meer</a>
+            </div>
           </div>
         }
       }
@@ -97,7 +102,8 @@
           <mat-icon>location_on</mat-icon>
           <div class="contact-details">
             <h3>Adres</h3>
-            <p><a href="https://www.google.com/maps/search/?api=1&query=Edward+de+Jansstraat+8,+8200+Brugge" target="_blank">
+            <p><a href="https://www.google.com/maps/search/?api=1&query=Edward+de+Jansstraat+8,+8200+Brugge"
+                  target="_blank">
               Edward de Jansstraat 8<br>
               8200 Brugge
             </a></p>

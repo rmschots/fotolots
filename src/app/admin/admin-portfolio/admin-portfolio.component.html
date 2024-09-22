@@ -9,13 +9,14 @@
         <button mat-raised-button class="add-photos-button" (click)="addPhotosToCategory(i)">Add Photos</button>
         <button mat-raised-button class="remove-category-button" (click)="removeCategory(i)">Remove Category</button>
 
-        <div formArrayName="pictures" class="pictures-container" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="onPictureDrop($event, i)">
+        <div formArrayName="pictures" class="pictures-container" cdkDropList cdkDropListOrientation="horizontal"
+             (cdkDropListDropped)="onPictureDrop($event, i)">
           @for (picture of category.controls.pictures.controls; track picture.controls.id; let j = $index) {
             <div [formGroupName]="j" class="picture-item" cdkDrag>
               <div class="picture-drag-placeholder" *cdkDragPlaceholder></div>
               <img [src]="generateUrlSmall(category.controls.name.value, picture.controls.id.value)"
                    [alt]="picture.get('originalFilename')?.value"
-                   (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
+                   (error)="getAlternativePicture($event)"
                    class="thumbnail">
               <span class="filename">{{ picture.get('originalFilename')?.value }}</span>
               <button mat-icon-button class="remove-photo-button" (click)="removePhotoFromCategory(i, j)">
@@ -26,7 +27,7 @@
                 <div class="drag-preview">
                   <img [src]="generateUrlSmall(category.controls.name.value, picture.controls.id.value)"
                        [alt]="picture.get('originalFilename')?.value"
-                       (error)="getAlternativePicture($event, category.controls.name.value, picture.controls.id.value)"
+                       (error)="getAlternativePicture($event)"
                        class="thumbnail">
                   <span class="filename">{{ picture.get('originalFilename')?.value }}</span>
                 </div>

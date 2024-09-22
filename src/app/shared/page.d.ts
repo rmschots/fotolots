@@ -3,6 +3,7 @@ export type HomePage = {
   diensten: {
     category: string;
     text: string;
+    imageId: string;
   }[]
 }
 
@@ -23,7 +24,7 @@ export type OverMijPage = {
 export type DienstenPage = {
   diensten: {
     name: string;
-    imageUrl: string;
+    imageId: string;
     description: string;
     inclusions: string[];
   }[]

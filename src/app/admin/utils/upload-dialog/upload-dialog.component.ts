@@ -11,6 +11,11 @@ interface FileUpload {
   id?: string;
 }
 
+export interface UploadParams {
+  path: string;
+  multi: boolean;
+}
+
 export interface UploadResult {
   id: string;
   originalName: string;
@@ -36,7 +41,7 @@ export class UploadDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<UploadDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public category: string
+    @Inject(MAT_DIALOG_DATA) public uploadParams: UploadParams
   ) {
   }
 
@@ -46,8 +51,11 @@ export class UploadDialogComponent {
     if (selectedFiles && selectedFiles.length > 0) {
       const validFiles = Array.from(selectedFiles).filter(this.isValidFileType);
       const newFiles = validFiles.map(file => ({file, progress: 0}));
-      this.files.update(files => [...files, ...newFiles]);
-
+      if (this.uploadParams.multi) {
+        this.files.update(files => [...files, ...newFiles]);
+      } else {
+        this.files.set(newFiles.length > 0 ? [newFiles[0]] : []);
+      }
       if (validFiles.length !== selectedFiles.length) {
         this.errorMessage.set('Some files were not added because they are not of the allowed types.');
       }
@@ -109,7 +117,7 @@ export class UploadDialogComponent {
       const uuid = uuidv4();
       const extension = fileUpload.file.name.split('.').pop();
       const uploadedName = `${uuid}.${extension}`;
-      const storagePath = `portfolio/${(this.category.toLowerCase())}/${uploadedName}`;
+      const storagePath = `${this.uploadParams.path}/${uploadedName}`;
       const storageRef = ref(this.#storage, storagePath);
       const uploadTask = uploadBytesResumable(storageRef, fileUpload.file);
 

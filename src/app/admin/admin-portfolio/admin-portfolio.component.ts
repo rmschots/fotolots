@@ -3,9 +3,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseAdminComponent } from '../utils/base-admin-page.component';
 import { PortfolioPage } from '../../shared/page';
 import { MatDialog } from '@angular/material/dialog';
-import { UploadDialogComponent, UploadResult } from './upload-dialog/upload-dialog.component';
 import { AddCategoryDialogComponent } from './add-category-dialog/add-category-dialog.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { UploadDialogComponent, UploadParams, UploadResult } from '../utils/upload-dialog/upload-dialog.component';
 
 type PortfolioPageForm = {
   categories: FormArray<FormGroup<CategoryForm>>;
@@ -72,7 +72,10 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
     let categoryName = this.fg.controls.categories.at(categoryIndex).controls.name;
     const dialogRef = this.#dialog.open(UploadDialogComponent, {
       width: '500px',
-      data: categoryName.value
+      data: {
+        path: `portfolio/${(categoryName.value.toLowerCase())}`,
+        multi: true
+      } as UploadParams
     });
     dialogRef.afterClosed().subscribe((results: UploadResult[]) => {
       if (results) {
@@ -124,8 +127,11 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
     return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_150x150.avif?alt=media`;
   }
 
-  getAlternativePicture(event: ErrorEvent, category: string, pictureId: string) {
-    (event.target as HTMLImageElement).src = 'https://www.google.com/images/srpr/logo11w.png';
+  getAlternativePicture(event: ErrorEvent) {
+    const errorImage = '/assets/processing.png';
+    if((event.target as HTMLImageElement).src !== errorImage) {
+      (event.target as HTMLImageElement).src = errorImage;
+    }
   }
 
   onCategoryDrop(event: CdkDragDrop<string[]>) {

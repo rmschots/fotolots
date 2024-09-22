@@ -19,6 +19,13 @@
                 <mat-label>Over mij</mat-label>
                 <textarea matInput rows="5" formControlName="text"></textarea>
               </mat-form-field>
+              @if (dienst.controls.imageId.value) {
+                <img [src]="generateUrlSmall(dienst.controls.imageId.value)"
+                     [alt]="dienst.controls.imageId.value"
+                     (error)="getAlternativePicture($event)"
+                     class="thumbnail">
+              }
+              <button mat-button (click)="setImage(idx)">Foto veranderen</button>
               <button mat-flat-button (click)="removeDienst(idx)">Dienst verwijderen</button>
             </div>
           }

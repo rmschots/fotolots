@@ -8,9 +8,23 @@
   margin-top: calc(0px - var(--toolbar-height));
   height: 100vh;
   width: 100%;
-  background: url("/assets/home-background-80.webp") no-repeat center center;
+  background: url("/assets/home-background-80.webp") no-repeat fixed center;
   background-size: cover;
   position: relative;
+}
+
+
+mat-card-title-group {
+  justify-content: center;
+}
+
+mat-card-header {
+  margin-bottom: 2rem; // Increase space between title and content
+}
+
+mat-card-title {
+  font-size: 24px; // Adjust as needed
+  font-weight: 500; // Adjust as needed
 }
 
 section {
@@ -73,27 +87,84 @@ section {
   }
 }
 
-.diensten-content {
-  display: flex;
-  flex-direction: column;
-}
+#diensten-section {
+  margin-bottom: 2rem;
 
-.dienst {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-
-  a {
-    align-self: end;
+  mat-card {
+    overflow: hidden; // This ensures the card doesn't expand due to internal margins
   }
 }
 
-@media (min-width: 1200px) {
+.diensten-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dienst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dienst-image {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dienst-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    margin-top: auto; // This pushes the button to the bottom of the dienst-info div
+  }
+}
+
+@media (min-width: 800px) {
+  #diensten-section {
+    mat-card-header {
+      margin-bottom: 3rem; // Even more space on larger screens if desired
+    }
+
+    mat-card-content {
+      padding-top: 1.5rem; // More top padding on larger screens
+    }
+  }
+
   .diensten-content {
     flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .dienst {
+    width: calc(33.333% - 1.33rem);
+  }
+
+  .dienst-info {
+    flex-grow: 1;
+    justify-content: space-between;
   }
 }
 

@@ -18,7 +18,7 @@ import { AdminContactComponent } from './admin-contact/admin-contact.component';
 import { AdminPageService } from './services/admin-page.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UploadDialogComponent } from './admin-portfolio/upload-dialog/upload-dialog.component';
+import { UploadDialogComponent } from './utils/upload-dialog/upload-dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AddCategoryDialogComponent } from './admin-portfolio/add-category-dialog/add-category-dialog.component';

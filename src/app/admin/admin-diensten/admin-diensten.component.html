@@ -14,10 +14,13 @@
                 <mat-label>omschrijving</mat-label>
                 <textarea matInput rows="5" formControlName="description"></textarea>
               </mat-form-field>
-              <mat-form-field>
-                <mat-label>url</mat-label>
-                <input matInput formControlName="imageUrl">
-              </mat-form-field>
+              @if (dienst.controls.imageId.value) {
+                <img [src]="generateUrlSmall(dienst.controls.imageId.value)"
+                     [alt]="dienst.controls.imageId.value"
+                     (error)="getAlternativePicture($event)"
+                     class="thumbnail">
+              }
+              <button mat-button (click)="setImage(index)">Foto veranderen</button>
 
               <!-- Inclusions section -->
               <div formArrayName="inclusions">
