@@ -22,29 +22,34 @@
 </section>
 
 <section id="diensten-section">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Mijn diensten</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content class="diensten-content">
-      @if (pageData$ | async; as pageData) {
-        @for (dienst of pageData.diensten; track dienst.category) {
-          <div class="dienst">
+  <h2>Mijn diensten</h2>
+  @if (pageData$ | async; as pageData) {
+    <div class="diensten-list">
+
+
+      @for (dienst of pageData.diensten; track dienst.category) {
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title-group>
+              <mat-card-title>{{ dienst.category }}</mat-card-title>
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content class="diensten-content">
             <div class="dienst-image">
               <img [src]="generateUrlMedium(dienst.imageId)" [alt]="dienst.category">
             </div>
             <div class="dienst-info">
-              <h2>{{ dienst.category }}</h2>
               <p>{{ dienst.text }}</p>
-              <a mat-raised-button routerLink="/diensten">Ontdek meer</a>
             </div>
-          </div>
-        }
+          </mat-card-content>
+          <mat-card-actions>
+            <a mat-raised-button routerLink="/diensten">Ontdek meer</a>
+          </mat-card-actions>
+        </mat-card>
+
       }
-    </mat-card-content>
-  </mat-card>
+    </div>
+  }
 </section>
 
 <section id="contact-section">

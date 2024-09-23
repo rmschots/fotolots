@@ -6,6 +6,13 @@
           <mat-label>Over mij tekst</mat-label>
           <textarea matInput rows="10" formControlName="description"></textarea>
         </mat-form-field>
+        @if (fg.controls.imageId.value) {
+          <img [src]="generateUrlSmall(fg.controls.imageId.value)"
+               [alt]="fg.controls.imageId.value"
+               (error)="getAlternativePicture($event)"
+               class="thumbnail">
+        }
+        <button mat-button (click)="setImage()">Foto veranderen</button>
       </mat-card-content>
       <mat-card-actions>
         <button mat-flat-button class="save-button" (click)="submitForm()">SAVE</button>

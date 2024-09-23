@@ -88,17 +88,30 @@ section {
 }
 
 #diensten-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 2rem;
 
   mat-card {
     overflow: hidden; // This ensures the card doesn't expand due to internal margins
   }
+
+  mat-card-actions {
+    justify-content: end;
+  }
+}
+
+.diensten-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .diensten-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
 }
 
 .dienst {
@@ -110,7 +123,6 @@ section {
 
 .dienst-image {
   width: 100%;
-  max-width: 300px;
   height: 200px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -141,21 +153,15 @@ section {
   }
 }
 
-@media (min-width: 800px) {
-  #diensten-section {
-    mat-card-header {
-      margin-bottom: 3rem; // Even more space on larger screens if desired
-    }
 
-    mat-card-content {
-      padding-top: 1.5rem; // More top padding on larger screens
-    }
+@media (min-width: 800px) {
+
+  .diensten-list {
+    flex-direction: row;
   }
 
   .diensten-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
+    flex-direction: column;
   }
 
   .dienst {

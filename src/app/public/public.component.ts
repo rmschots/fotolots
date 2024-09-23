@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, computed, HostListener, signal, Wri
 })
 export class PublicComponent {
   screenWidth: WritableSignal<number> = signal(window.innerWidth);
-  isMobile = computed(() => this.screenWidth() < 1200);
+  isMobile = computed(() => this.screenWidth() < 1024);
 
   ngOnInit() {
     this.screenWidth.set(window.innerWidth);

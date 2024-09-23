@@ -19,6 +19,7 @@ export type PortfolioPage = {
 
 export type OverMijPage = {
   description: string;
+  imageId: string;
 }
 
 export type DienstenPage = {

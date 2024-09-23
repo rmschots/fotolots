@@ -86,7 +86,6 @@ export class AdminDienstenComponent extends BaseAdminComponent<DienstenPage, Die
         const picturesFormControl = this.fg.controls.diensten.at(dienstIndex).controls.imageId;
         picturesFormControl.setValue(results[0].id);
         this.#cdr.detectChanges();
-        this.submitForm();
       }
     });
   }

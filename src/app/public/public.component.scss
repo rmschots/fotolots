@@ -2,9 +2,6 @@
   display: block;
 }
 
-.content {
-}
-
 .desktop-toolbar {
   position: sticky;
   top: 0;
@@ -25,4 +22,8 @@ mat-toolbar {
 
 mat-drawer-container {
   height: 100vh;
+}
+
+.root-mobile-container{
+  background-color: white;
 }

@@ -11,4 +11,8 @@ import { OverMijPage } from '../../shared/page';
 export class OverMijComponent {
   #pageService: PageService = inject(PageService);
   pageData$ = this.#pageService.readPageData<OverMijPage>('overMij');
+
+  generateUrlMedium(imageId: string) {
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/overMij%2Fresized%2F${imageId}_600x900.avif?alt=media`;
+  }
 }
