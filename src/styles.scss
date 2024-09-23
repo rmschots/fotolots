@@ -16,6 +16,13 @@ $fotolots-theme: mat.define-theme((
     primary: mat.$azure-palette,
     tertiary: mat.$blue-palette,
   ),
+  typography: (
+    plain-family: 'Nunito',
+    brand-family: 'Montserrat',
+    regular-weight: 400,
+    medium-weight: 500,
+    bold-weight: 700,
+  ),
   density: (
     scale: 0,
   )
@@ -30,10 +37,8 @@ $fotolots-theme: mat.define-theme((
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
 // For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-//@include mat.typography-hierarchy($fotolots-theme);
+@include mat.typography-hierarchy($fotolots-theme);
 
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($fotolots-theme);
 /* You can add global styles to this file, and also import other style files */
 
 html, body {
@@ -41,10 +46,6 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-body {
   --toolbar-height: var(--mat-toolbar-standard-height);
 }
 @media (max-width: 599px) {

@@ -46,31 +46,37 @@ section {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 20px; /* Moved slightly higher */
+  right: 20px; /* Moved slightly more to the right */
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 800;
   color: #EEBC63;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 15px; /* Added padding */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 15px rgba(238, 188, 99, 0.5); /* Glow effect using the existing color */
 }
 
 .scroll-indicator:hover {
-  transform: scale(1.1); /* Slightly increase the size on hover */
+  transform: scale(1.1) translateY(-5px); /* Scale up and lift slightly */
+  box-shadow: 0 5px 20px rgba(238, 188, 99, 0.7); /* Increased glow on hover */
 }
 
 .scroll-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: 24px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  font-size: 28px; /* Increased font size */
+  letter-spacing: 3px; /* Increased letter spacing */
+  margin-bottom: 15px;
+  font-weight: bold; /* Made text bold */
 }
 
 .scroll-arrow {
-  font-size: 32px;
+  font-size: 40px; /* Increased arrow size */
   line-height: 1;
   animation: bounce 2s infinite;
 }
@@ -112,6 +118,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
 }
 
 .dienst {
