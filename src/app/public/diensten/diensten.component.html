@@ -1,9 +1,9 @@
 <div class="photography-services">
   <h1 class="mat-display-2">Diensten</h1>
   @if (pageData$ | async; as pageData) {
-    @for (category of pageData.diensten; track category.name) {
+    @for (category of pageData.diensten; track category.name; let odd = $odd) {
       <mat-card appearance="outlined" class="service-category">
-        <div class="card-content">
+        <div class="card-content" [ngClass]="{'odd': odd}">
           <div class="text-content">
             <mat-card-header>
               <mat-card-title>{{ category.name }}</mat-card-title>

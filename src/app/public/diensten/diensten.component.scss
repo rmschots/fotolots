@@ -44,6 +44,9 @@
   .card-content {
     flex-direction: row;
   }
+  .card-content.odd {
+    flex-direction: row-reverse;
+  }
 
   .text-content {
     flex: 1;
