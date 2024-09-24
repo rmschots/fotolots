@@ -12,8 +12,17 @@
 
 .mobile-toolbar {
   display: flex;
+  justify-content: center;
   position: relative;
   z-index: 900;
+  .mobile-toolbar-left {
+    flex-grow: 1;
+    display: flex;
+  }
+  .mobile-toolbar-right {
+    flex-grow: 1;
+    display: flex;
+  }
 }
 
 mat-toolbar {
@@ -26,4 +35,8 @@ mat-drawer-container {
 
 .root-mobile-container{
   background-color: white;
+}
+
+.toolbar-logo {
+  height: 100%;
 }

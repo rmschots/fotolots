@@ -11,10 +11,15 @@
     </mat-drawer>
     <mat-drawer-content>
       <mat-toolbar class="mobile-toolbar">
-        <h4 style="position: absolute;width: calc(100% - 32px);text-align: center;">Fotolots</h4>
-        <button mat-icon-button (click)="drawer.open()">
-          <mat-icon>menu</mat-icon>
-        </button>
+        <div class="mobile-toolbar-left">
+          <button mat-icon-button (click)="drawer.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <a class="toolbar-logo" routerLink="/">
+          <img class="toolbar-logo" src="/assets/fotolots-logo-1.svg" alt="navbar-logo">
+        </a>
+        <div class="mobile-toolbar-right"></div>
       </mat-toolbar>
       <div class="content">
         <router-outlet></router-outlet>
@@ -23,7 +28,9 @@
   </mat-drawer-container>
 } @else {
   <mat-toolbar class="desktop-toolbar">
-    <h4 style="position: absolute; left: 32px">Fotolots</h4>
+    <a class="toolbar-logo" routerLink="/">
+      <img class="toolbar-logo" src="/assets/fotolots-logo-1.svg" alt="navbar-logo">
+    </a>
 
     <a mat-button routerLink="/"><h4>Home</h4></a>
     <a mat-button routerLink="/portfolio"><h4>Portfolio</h4></a>
