@@ -23,6 +23,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AddCategoryDialogComponent } from './admin-portfolio/add-category-dialog/add-category-dialog.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AdminMaintenanceComponent } from './admin-maintenance/admin-maintenance.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AdminDienstenComponent,
     AdminContactComponent,
     UploadDialogComponent,
-    AddCategoryDialogComponent
+    AddCategoryDialogComponent,
+    AdminMaintenanceComponent
   ],
   imports: [
     SharedModule,
@@ -51,6 +54,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDialogModule,
     MatListModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
     DragDropModule
   ],
   providers: [AdminPageService]

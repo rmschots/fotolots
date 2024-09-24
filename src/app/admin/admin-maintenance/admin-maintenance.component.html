@@ -1,0 +1,55 @@
+<div>
+  <!-- Button to trigger checking for missing files -->
+  <button mat-raised-button (click)="checkMissingFiles()" [disabled]="isCheckingFiles()">Check Missing Files</button>
+
+  <!-- Status message for checking files -->
+  <p>{{ statusMessage() }}</p>
+
+  <!-- Spinner while checking files -->
+  <mat-spinner *ngIf="isCheckingFiles()"></mat-spinner>
+
+  <!-- Display missing files if any -->
+  <div *ngIf="missingFiles().length > 0; else noMissingFiles">
+    <h3>Missing Files</h3>
+    <ul>
+      <li *ngFor="let file of missingFiles()">
+        <strong>{{ file.path }}/{{ file.imageId }}</strong>
+        <ul>
+          <li *ngFor="let missing of file.files">{{ missing }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noMissingFiles>
+    <p *ngIf="!isCheckingFiles()">No missing files found.</p>
+  </ng-template>
+
+  <hr>
+
+  <!-- Button to trigger deleting floating files -->
+  <button mat-raised-button color="warn" (click)="deleteFloatingFiles()" [disabled]="isDeletingFiles()">Delete Floating Files</button>
+
+  <!-- Status message for deleting files -->
+  <p>{{ deleteStatusMessage() }}</p>
+
+  <!-- Spinner while deleting files -->
+  <mat-spinner *ngIf="isDeletingFiles()"></mat-spinner>
+
+  <!-- Display deleted files if any -->
+  <div *ngIf="deletedFiles().length > 0; else noDeletedFiles">
+    <h3>Deleted Floating Files</h3>
+    <ul>
+      <li *ngFor="let file of deletedFiles()">
+        <strong>{{ file.path }}</strong>
+        <ul>
+          <li>{{ file.fileName }}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noDeletedFiles>
+    <p *ngIf="!isDeletingFiles()">No floating files found for deletion.</p>
+  </ng-template>
+</div>

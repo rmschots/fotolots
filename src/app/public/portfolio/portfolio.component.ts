@@ -51,4 +51,16 @@ export class PortfolioComponent {
     return Math.ceil(window.innerWidth / 600);
   }
 
+  generateAlternativeUrl(category: string, pictureId: string): (currentUrl: string) => string {
+    return (currentUrl: string) => {
+      if (currentUrl === this.generateUrlHuge(category, pictureId)) {
+        return this.generateUrlBig(category, pictureId);
+      } else if (currentUrl === this.generateUrlBig(category, pictureId)) {
+        return this.generateUrlMedium(category, pictureId);
+      } else if (currentUrl === this.generateUrlMedium(category, pictureId)) {
+        return this.generateUrlSmall(category, pictureId);
+      }
+      return '/assets/processing.png';
+    };
+  }
 }

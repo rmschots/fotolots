@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-optimized-image',
@@ -7,10 +7,12 @@ import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OptimizedImageComponent {
+  #cdr = inject(ChangeDetectorRef);
   src = input.required<string>();
   alt = input.required<string>();
   placeholderSrc = input.required<string>();
   loaded = signal(false);
+  generateAlternativeUrlFn = input.required<(currentUrl: string) => string>();
 
   constructor() {
     this.lazyLoadImage();
@@ -23,6 +25,7 @@ export class OptimizedImageComponent {
           const img = entry.target as HTMLImageElement;
           img.src = img.dataset['src'] ?? '';
           observer.unobserve(img);
+          this.#cdr.detectChanges();
         }
       });
     });
@@ -35,5 +38,12 @@ export class OptimizedImageComponent {
 
   onImageLoad() {
     this.loaded.set(true);
+    this.#cdr.detectChanges();
+  }
+
+  onImageError(event: ErrorEvent) {
+    console.log('error', event);
+    (event.target as HTMLImageElement).src = this.generateAlternativeUrlFn()((event.target as HTMLImageElement).src);
+    console.log('image error', (event.target as HTMLImageElement).src)
   }
 }

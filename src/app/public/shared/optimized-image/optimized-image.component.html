@@ -11,5 +11,6 @@
     class="lazy"
     [class.loaded]="loaded()"
     (load)="onImageLoad()"
+    (error)="onImageError($event)"
   />
 </div>

@@ -9,6 +9,7 @@
                 <a class="item" [href]="generateUrlHuge(category.name, picture.id)">
                   <app-optimized-image
                     [src]="generateUrlBig(category.name, picture.id)"
+                    [generateAlternativeUrlFn]="generateAlternativeUrl(category.name, picture.id)"
                     [placeholderSrc]="generateUrlSmall(category.name, picture.id)"
                     [alt]="picture.originalFilename"
                   ></app-optimized-image>
