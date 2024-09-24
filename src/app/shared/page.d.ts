@@ -1,8 +1,6 @@
 export type HomePage = {
-  welkomSectieText: string;
   diensten: {
     category: string;
-    text: string;
     imageId: string;
   }[]
 }

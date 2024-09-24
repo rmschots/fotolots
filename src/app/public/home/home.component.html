@@ -1,27 +1,12 @@
 <div class="background-full-screen">
   <div class="website-title"><img src="/assets/fotolots-logo-1.svg" alt="logo"></div>
-  <div class="scroll-indicator" (click)="scrollToWelcome()" (keydown.enter)="scrollToWelcome()" tabindex="0  ">
+  <div class="scroll-indicator" (click)="scrollToDiensten()" (keydown.enter)="scrollToDiensten()" tabindex="0  ">
     <span class="scroll-text">scroll om te beginnen</span>
     <span class="scroll-arrow">↓</span>
   </div>
 </div>
 
-<section #welcomeSection id="welcome-section">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Welkom</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      @if (pageData$ | async; as pageData) {
-        <p class="newlines-as-br">{{ pageData.welkomSectieText }}</p>
-      }
-    </mat-card-content>
-  </mat-card>
-</section>
-
-<section id="diensten-section">
+<section #dienstenSection id="diensten-section">
   <h3>Mijn diensten</h3>
   @if (pageData$ | async; as pageData) {
     <div class="diensten-list">
@@ -34,17 +19,12 @@
           </mat-card-header>
           <mat-card-content class="diensten-content">
             <div class="dienst-image">
-              <img [src]="generateUrlBig(dienst.imageId)" [alt]="dienst.category">
-            </div>
-            <div class="dienst-info">
-              <p>{{ dienst.text }}</p>
+              <a routerLink="/diensten">
+                <img [src]="generateUrlBig(dienst.imageId)" [alt]="dienst.category">
+              </a>
             </div>
           </mat-card-content>
-          <mat-card-actions>
-            <a mat-button routerLink="/diensten">Ontdek meer</a>
-          </mat-card-actions>
         </mat-card>
-
       }
     </div>
   }

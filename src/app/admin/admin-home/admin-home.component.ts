@@ -7,12 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 
 type DienstForm = {
   category: FormControl<string>;
-  text: FormControl<string>;
   imageId: FormControl<string>;
 }
 
 type HomePageForm = {
-  welkomSectieText: FormControl<string>;
   diensten: FormArray<FormGroup<DienstForm>>;
 };
 
@@ -28,7 +26,6 @@ export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageFor
 
   override initFormGroup(): FormGroup<HomePageForm> {
     return new FormGroup<HomePageForm>({
-      welkomSectieText: new FormControl<string>('', {nonNullable: true}),
       diensten: new FormArray<FormGroup<DienstForm>>([])
     });
   }
@@ -39,7 +36,6 @@ export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageFor
     data.diensten.forEach(() => {
       dienstenFormArray.push(new FormGroup<DienstForm>({
         category: new FormControl<string>('', {nonNullable: true}),
-        text: new FormControl<string>('', {nonNullable: true}),
         imageId: new FormControl<string>('', {nonNullable: true}),
       }));
     });
@@ -52,7 +48,6 @@ export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageFor
   addDienst() {
     this.fg.controls.diensten.push(new FormGroup<DienstForm>({
       category: new FormControl<string>('', {nonNullable: true}),
-      text: new FormControl<string>('', {nonNullable: true}),
       imageId: new FormControl<string>('', {nonNullable: true}),
     }));
   }

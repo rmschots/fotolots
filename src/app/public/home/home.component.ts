@@ -9,12 +9,12 @@ import { HomePage } from '../../shared/page';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  @ViewChild('welcomeSection') welcomeSection!: ElementRef;
+  @ViewChild('dienstenSection') dienstenSection!: ElementRef;
   #pageService: PageService = inject(PageService);
   pageData$ = this.#pageService.readPageData<HomePage>('home');
 
-  scrollToWelcome() {
-    this.welcomeSection.nativeElement.scrollIntoView({behavior: 'smooth'});
+  scrollToDiensten() {
+    this.dienstenSection.nativeElement.scrollIntoView({behavior: 'smooth'});
   }
 
   generateUrlMedium(imageId: string) {
