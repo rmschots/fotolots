@@ -6,9 +6,9 @@
           <lightgallery [settings]="settings">
             <masonry-layout [attr.cols]="columns()" gap="8">
               @for (picture of category.pictures; track picture.id) {
-                <a class="item" [href]="generateUrlBig(category.name, picture.id)">
+                <a class="item" [href]="generateUrlHuge(category.name, picture.id)">
                   <app-optimized-image
-                    [src]="generateUrlMedium(category.name, picture.id)"
+                    [src]="generateUrlBig(category.name, picture.id)"
                     [placeholderSrc]="generateUrlSmall(category.name, picture.id)"
                     [alt]="picture.originalFilename"
                   ></app-optimized-image>

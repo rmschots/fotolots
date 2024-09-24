@@ -30,6 +30,10 @@ export class PortfolioComponent {
     return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_1920x1920.avif?alt=media`;
   }
 
+  generateUrlHuge(category: string, pictureId: string) {
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/portfolio%2F${category.toLowerCase()}%2Fresized%2F${pictureId}_5000x5000.avif?alt=media`;
+  }
+
   settings: LightGallerySettings = {
     counter: false,
     selector: '.item',

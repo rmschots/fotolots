@@ -1,5 +1,5 @@
 <div class="background-full-screen">
-  <div class="website-title">Fotolots</div>
+  <div class="website-title"><img src="assets/fotolots-logo-1.svg" alt="logo"></div>
   <div class="scroll-indicator" (click)="scrollToWelcome()" (keydown.enter)="scrollToWelcome()" tabindex="0  ">
     <span class="scroll-text">scroll om te beginnen</span>
     <span class="scroll-arrow">↓</span>
@@ -34,7 +34,7 @@
           </mat-card-header>
           <mat-card-content class="diensten-content">
             <div class="dienst-image">
-              <img [src]="generateUrlMedium(dienst.imageId)" [alt]="dienst.category">
+              <img [src]="generateUrlBig(dienst.imageId)" [alt]="dienst.category">
             </div>
             <div class="dienst-info">
               <p>{{ dienst.text }}</p>
@@ -95,21 +95,10 @@
           </div>
         </div>
         <div class="contact-item">
-          <mat-icon>account_balance</mat-icon>
+          <mat-icon>storefront</mat-icon>
           <div class="contact-details">
-            <h3>Betalingen</h3>
+            <h3>Ondernemingsnummer</h3>
             <p>BE 1013.104.028</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>location_on</mat-icon>
-          <div class="contact-details">
-            <h3>Adres</h3>
-            <p><a href="https://www.google.com/maps/search/?api=1&query=Edward+de+Jansstraat+8,+8200+Brugge"
-                  target="_blank">
-              Edward de Jansstraat 8<br>
-              8200 Brugge
-            </a></p>
           </div>
         </div>
       </div>
