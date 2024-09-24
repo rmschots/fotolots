@@ -6,7 +6,7 @@
 
 .background-full-screen {
   margin-top: calc(0px - var(--toolbar-height));
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   background: url("/assets/home-background.avif") no-repeat fixed center;
   background-size: cover;
@@ -37,8 +37,8 @@ section {
   width: calc(100% - 80px);
   max-width: 500px;
   position: absolute;
-  left: 0px;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
 }
 
 .scroll-indicator {
