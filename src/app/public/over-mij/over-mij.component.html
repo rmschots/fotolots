@@ -15,7 +15,13 @@
           </mat-card-content>
         </div>
         <div class="image-container">
-          <img mat-card-image [src]="generateUrlBig(pageData.imageId)" alt="Foto van mezelf">
+          <app-optimized-image
+            [src]="generateUrlBig(pageData.imageId)"
+            [generateAlternativeUrlFn]="generateAlternativeUrl(pageData.imageId)"
+            [placeholderSrc]="generateUrlSmall(pageData.imageId)"
+            [alt]="'Foto van mezelf'"
+            [objectFit]="'cover'"
+          ></app-optimized-image>
         </div>
       </div>
     </mat-card>

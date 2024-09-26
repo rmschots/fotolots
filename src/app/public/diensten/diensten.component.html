@@ -22,7 +22,13 @@
             </mat-card-content>
           </div>
           <div class="image-container">
-            <img mat-card-image [src]="generateUrlBig(category.imageId)" [alt]="category.name">
+            <app-optimized-image
+              [src]="generateUrlBig(category.imageId)"
+              [generateAlternativeUrlFn]="generateAlternativeUrl(category.imageId)"
+              [placeholderSrc]="generateUrlSmall(category.imageId)"
+              [alt]="category.name"
+              [objectFit]="'cover'"
+            ></app-optimized-image>
           </div>
         </div>
       </mat-card>

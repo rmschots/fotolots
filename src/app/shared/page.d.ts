@@ -5,14 +5,21 @@ export type HomePage = {
   }[]
 }
 
+export type PortfolioPagePicture = {
+  id: string;
+  originalFilename: string;
+  width: number;
+  height: number;
+  extension: string;
+};
+
+export type PortfolioPageCategory = {
+  name: string;
+  pictures: PortfolioPagePicture[]
+};
+
 export type PortfolioPage = {
-  categories: {
-    name: string;
-    pictures: {
-      id: string;
-      originalFilename: string;
-    }[]
-  }[];
+  categories: PortfolioPageCategory[];
 }
 
 export type OverMijPage = {

@@ -30,14 +30,13 @@
 
 .image-container {
   order: 1;
-}
 
-.image-container img {
-  width: 100%;
-  max-height: 200px;
-  height: auto;
-  object-fit: cover;
-  display: block; /* Remove any default inline spacing */
+  & > * {
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    display: block;
+  }
 }
 
 @media (min-width: 800px) {
@@ -56,10 +55,10 @@
   .image-container {
     flex: 0 0 400px;
     order: 2;
-  }
 
-  .image-container img {
-    height: 100%;
-    max-height: unset;
+    & > * {
+      height: 100%;
+      max-height: unset;
+    }
   }
 }

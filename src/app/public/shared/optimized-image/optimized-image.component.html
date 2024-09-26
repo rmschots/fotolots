@@ -3,7 +3,9 @@
     [src]="placeholderSrc()"
     [alt]="alt()"
     class="placeholder"
-    [class.hidden]="loaded()"
+    [class.hidden]="placeholderHidden()"
+    (load)="onPlaceHolderLoad()"
+    [ngStyle]="{'object-fit': objectFit()}"
   />
   <img
     [attr.data-src]="src()"
@@ -12,5 +14,10 @@
     [class.loaded]="loaded()"
     (load)="onImageLoad()"
     (error)="onImageError($event)"
+    [ngStyle]="{'object-fit': objectFit()}"
   />
+  <div *ngIf="!placeHolderLoaded()" class="placeholder-placeholder">
+    <mat-icon>image</mat-icon>
+    <p>Loading...</p>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BaseAdminComponent } from '../utils/base-admin-page.component';
-import { PortfolioPage } from '../../shared/page';
+import { PortfolioPage, PortfolioPageCategory, PortfolioPagePicture } from '../../shared/page';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCategoryDialogComponent } from './add-category-dialog/add-category-dialog.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -19,6 +19,9 @@ type CategoryForm = {
 type PictureForm = {
   id: FormControl<string>;
   originalFilename: FormControl<string>;
+  width: FormControl<number>;
+  height: FormControl<number>;
+  extension: FormControl<string>;
 };
 
 @Component({
@@ -83,7 +86,10 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
         results.forEach(result => {
           picturesFormArray.push(this.createPictureFormGroup({
             id: result.id,
-            originalFilename: result.originalName
+            originalFilename: result.originalName,
+            width: result.width,
+            height: result.height,
+            extension: result.extension
           }));
         });
         this.#cdr.detectChanges();
@@ -101,10 +107,7 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
     this.submitForm();
   }
 
-  private createCategoryFormGroup(category: {
-    name: string;
-    pictures: { id: string; originalFilename: string }[]
-  }): FormGroup<CategoryForm> {
+  private createCategoryFormGroup(category: PortfolioPageCategory): FormGroup<CategoryForm> {
     return new FormGroup<CategoryForm>({
       name: new FormControl(category.name, {validators: [Validators.required], nonNullable: true}),
       pictures: new FormArray(
@@ -113,10 +116,22 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
     });
   }
 
-  private createPictureFormGroup(picture: { id: string; originalFilename: string }): FormGroup<PictureForm> {
+  private createPictureFormGroup(picture: PortfolioPagePicture): FormGroup<PictureForm> {
     return new FormGroup<PictureForm>({
       id: new FormControl(picture.id, {validators: [Validators.required], nonNullable: true}),
       originalFilename: new FormControl(picture.originalFilename, {
+        validators: [Validators.required],
+        nonNullable: true
+      }),
+      width: new FormControl(picture.width, {
+        validators: [Validators.required],
+        nonNullable: true
+      }),
+      height: new FormControl(picture.height, {
+        validators: [Validators.required],
+        nonNullable: true
+      }),
+      extension: new FormControl(picture.extension, {
         validators: [Validators.required],
         nonNullable: true
       })
@@ -129,7 +144,7 @@ export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, P
 
   getAlternativePicture(event: ErrorEvent) {
     const errorImage = '/assets/processing.png';
-    if((event.target as HTMLImageElement).src !== errorImage) {
+    if ((event.target as HTMLImageElement).src !== errorImage) {
       (event.target as HTMLImageElement).src = errorImage;
     }
   }

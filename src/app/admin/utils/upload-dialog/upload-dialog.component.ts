@@ -19,6 +19,9 @@ export interface UploadParams {
 export interface UploadResult {
   id: string;
   originalName: string;
+  width: number;
+  height: number;
+  extension: string;
   storagePath: string;
   downloadURL: string;
 }
@@ -119,29 +122,49 @@ export class UploadDialogComponent {
       const uploadedName = `${uuid}.${extension}`;
       const storagePath = `${this.uploadParams.path}/${uploadedName}`;
       const storageRef = ref(this.#storage, storagePath);
-      const uploadTask = uploadBytesResumable(storageRef, fileUpload.file);
+      // Create a FileReader to load the image and get dimensions
+      const reader = new FileReader();
+      const image = new Image();
 
-      uploadTask.on('state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          this.updateFileProgress(index, progress);
-        },
-        (error) => {
-          console.error('Upload failed', error);
-          reject(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            this.updateFileUploadComplete(index, uuid, uploadedName, downloadURL);
-            resolve({
-              id: uuid,
-              originalName: fileUpload.file.name,
-              storagePath,
-              downloadURL
+      reader.onload = (event: any) => {
+        image.src = event.target.result;
+      };
+
+      image.onload = () => {
+        const width = image.width;
+        const height = image.height;
+        console.log('wxh', width, height);
+
+        const uploadTask = uploadBytesResumable(storageRef, fileUpload.file);
+
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            this.updateFileProgress(index, progress);
+          },
+          (error) => {
+            console.error('Upload failed', error);
+            reject(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              this.updateFileUploadComplete(index, uuid, uploadedName, downloadURL);
+              resolve({
+                id: uuid,
+                originalName: fileUpload.file.name,
+                storagePath,
+                downloadURL,
+                width,  // Use the actual width of the image
+                height,  // Use the actual height of the image,
+                extension: extension ?? ''
+              });
             });
-          });
-        }
-      );
+          }
+        );
+      };
+
+      // Start reading the file as a data URL
+      reader.readAsDataURL(fileUpload.file);
     });
   }
 

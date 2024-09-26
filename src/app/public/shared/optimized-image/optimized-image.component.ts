@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, inject, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-optimized-image',
@@ -11,8 +11,11 @@ export class OptimizedImageComponent {
   src = input.required<string>();
   alt = input.required<string>();
   placeholderSrc = input.required<string>();
+  objectFit = input<'cover' | 'contain'>('contain');
   loaded = signal(false);
+  placeHolderLoaded = signal(false);
   generateAlternativeUrlFn = input.required<(currentUrl: string) => string>();
+  placeholderHidden = computed(() => this.loaded() || !this.placeHolderLoaded());
 
   constructor() {
     this.lazyLoadImage();
@@ -41,9 +44,13 @@ export class OptimizedImageComponent {
     this.#cdr.detectChanges();
   }
 
+  onPlaceHolderLoad() {
+    this.placeHolderLoaded.set(true);
+  }
+
   onImageError(event: ErrorEvent) {
-    console.log('error', event);
+    // console.log('error', event);
     (event.target as HTMLImageElement).src = this.generateAlternativeUrlFn()((event.target as HTMLImageElement).src);
-    console.log('image error', (event.target as HTMLImageElement).src)
+    // console.log('image error', (event.target as HTMLImageElement).src)
   }
 }
