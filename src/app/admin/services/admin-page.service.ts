@@ -5,10 +5,10 @@ import { isEqual } from 'lodash-es';
 
 @Injectable()
 export class AdminPageService {
-  #firestore: Firestore = inject(Firestore);
+  readonly #firestore: Firestore = inject(Firestore);
 
-  readPageData<T>(pageName: string): Observable<T> {
-    const document = doc(this.#firestore, 'pages', pageName);
+  readPageData<T extends { [x: string]: any; }>(pageName: string): Observable<T> {
+    const document: any = doc(this.#firestore, 'pages', pageName);
     return docSnapshots<T>(document)
       .pipe(
         map((value: DocumentSnapshot<T>) => value.data()),
