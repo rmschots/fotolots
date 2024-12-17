@@ -2,13 +2,11 @@
   <h1 class="mat-display-2">Diensten</h1>
   @if (pageData$ | async; as pageData) {
     @for (category of pageData.diensten; track category.name; let odd = $odd) {
-      <mat-card appearance="outlined" class="service-category">
+      <section class="service-category">
         <div class="card-content" [ngClass]="{'odd': odd}">
           <div class="text-content">
-            <mat-card-header>
-              <mat-card-title>{{ category.name }}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
+            <h3>{{ category.name }}</h3>
+            <section>
               <p>{{ category.description }}</p>
               <h6>Wat is inclusief?</h6>
               <mat-list>
@@ -19,7 +17,7 @@
                   </mat-list-item>
                 }
               </mat-list>
-            </mat-card-content>
+            </section>
           </div>
           <div class="image-container">
             <app-optimized-image
@@ -31,7 +29,7 @@
             ></app-optimized-image>
           </div>
         </div>
-      </mat-card>
+      </section>
     }
   }
 </div>

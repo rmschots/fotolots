@@ -2,6 +2,10 @@
   display: block;
 }
 
+a.is-active {
+  background-color: rgb(230, 236, 248);
+}
+
 .desktop-toolbar {
   position: sticky;
   top: 0;
@@ -23,10 +27,6 @@
     flex-grow: 1;
     display: flex;
   }
-}
-
-mat-toolbar {
-  background-color: rgba(100, 149, 237, 0.5);
 }
 
 mat-drawer-container {

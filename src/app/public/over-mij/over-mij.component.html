@@ -1,29 +1,17 @@
-@if (pageData$ | async; as pageData) {
-  <section id="welcome-section">
-    <mat-card appearance="outlined" class="over-mij-card">
-      <div class="card-content">
-        <div class="text-content">
-          <mat-card-header>
-            <mat-card-title-group>
-              <mat-card-title>Over mij</mat-card-title>
-            </mat-card-title-group>
-          </mat-card-header>
-          <mat-card-content>
-
-            <p class="newlines-as-br">{{ pageData.description }}</p>
-
-          </mat-card-content>
-        </div>
-        <div class="image-container">
-          <app-optimized-image
-            [src]="generateUrlBig(pageData.imageId)"
-            [generateAlternativeUrlFn]="generateAlternativeUrl(pageData.imageId)"
-            [placeholderSrc]="generateUrlSmall(pageData.imageId)"
-            [alt]="'Foto van mezelf'"
-            [objectFit]="'cover'"
-          ></app-optimized-image>
-        </div>
+<div class="over-mij-page">
+  <h1>Over mij</h1>
+  @if (pageData$ | async; as pageData) {
+    <section>
+      <p class="newlines-as-br">{{ pageData.description }}</p>
+      <div class="image-container">
+        <app-optimized-image
+          [src]="generateUrlBig(pageData.imageId)"
+          [generateAlternativeUrlFn]="generateAlternativeUrl(pageData.imageId)"
+          [placeholderSrc]="generateUrlSmall(pageData.imageId)"
+          [alt]="'Foto van mezelf'"
+          [objectFit]="'cover'"
+        ></app-optimized-image>
       </div>
-    </mat-card>
-  </section>
-}
+    </section>
+  }
+</div>

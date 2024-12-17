@@ -4,8 +4,8 @@
       <mat-nav-list>
         <a mat-list-item routerLink="/" (click)="drawer.close()">Home</a>
         <a mat-list-item routerLink="/portfolio" (click)="drawer.close()">Portfolio</a>
-        <a mat-list-item routerLink="/over-mij" (click)="drawer.close()">Over mij</a>
         <a mat-list-item routerLink="/diensten" (click)="drawer.close()">Diensten</a>
+        <a mat-list-item routerLink="/over-mij" (click)="drawer.close()">Over mij</a>
         <a mat-list-item routerLink="/contact" (click)="drawer.close()">Contact</a>
       </mat-nav-list>
     </mat-drawer>
@@ -32,11 +32,13 @@
       <img class="toolbar-logo" src="/assets/fotolots-logo-1.svg" alt="navbar-logo">
     </a>
 
-    <a mat-button routerLink="/"><h4>Home</h4></a>
-    <a mat-button routerLink="/portfolio"><h4>Portfolio</h4></a>
-    <a mat-button routerLink="/over-mij"><h4>Over mij</h4></a>
-    <a mat-button routerLink="/diensten"><h4>Diensten</h4></a>
-    <a mat-button routerLink="/contact"><h4>Contact</h4></a>
+    <a mat-button routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:true}">
+      <h4>Home</h4>
+    </a>
+    <a mat-button routerLink="/portfolio" routerLinkActive="is-active"><h4>Portfolio</h4></a>
+    <a mat-button routerLink="/diensten" routerLinkActive="is-active"><h4>Diensten</h4></a>
+    <a mat-button routerLink="/over-mij" routerLinkActive="is-active"><h4>Over mij</h4></a>
+    <a mat-button routerLink="/contact" routerLinkActive="is-active"><h4>Contact</h4></a>
   </mat-toolbar>
   <div class="content">
     <router-outlet></router-outlet>

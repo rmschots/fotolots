@@ -1,7 +1,7 @@
 <div class="background-full-screen">
   <div class="website-title"><img src="/assets/fotolots-logo-1.svg" alt="logo"></div>
   <div class="scroll-indicator" (click)="scrollToDiensten()" (keydown.enter)="scrollToDiensten()" tabindex="0  ">
-    <span class="scroll-text">scroll om te beginnen</span>
+    <span class="scroll-text">scrollen voor meer info</span>
     <span class="scroll-arrow">↓</span>
   </div>
 </div>
@@ -11,77 +11,12 @@
   @if (pageData$ | async; as pageData) {
     <div class="diensten-list">
       @for (dienst of pageData.diensten; track dienst.category) {
-        <mat-card appearance="outlined">
-          <mat-card-header>
-            <mat-card-title-group>
-              <mat-card-title>{{ dienst.category }}</mat-card-title>
-            </mat-card-title-group>
-          </mat-card-header>
-          <mat-card-content class="diensten-content">
-            <div class="dienst-image">
-              <a routerLink="/diensten">
-                <img [src]="generateUrlBig(dienst.imageId)" [alt]="dienst.category">
-              </a>
-            </div>
-          </mat-card-content>
-        </mat-card>
+        <div class="dienst-image">
+          <a routerLink="/diensten">
+            <img [src]="generateUrlBig(dienst.imageId)" [alt]="dienst.category">
+          </a>
+        </div>
       }
     </div>
   }
-</section>
-
-<section id="contact-section">
-  <mat-card appearance="outlined">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Contact Informatie</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <mat-icon>person</mat-icon>
-          <div class="contact-details">
-            <h3>Naam</h3>
-            <p>Charlotte Mangelschots</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>email</mat-icon>
-          <div class="contact-details">
-            <h3>E-mail</h3>
-            <p><a href="mailto:fotolots@gmail.com">fotolots&#64;gmail.com</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>chat</mat-icon>
-          <div class="contact-details">
-            <h3>WhatsApp</h3>
-            <p><a href="https://wa.me/0473592221">0473 59 22 21</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>phone</mat-icon>
-          <div class="contact-details">
-            <h3>Telefoon</h3>
-            <p><a href="tel:0473592221">0473 59 22 21</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>photo_camera</mat-icon>
-          <div class="contact-details">
-            <h3>Instagram</h3>
-            <p><a href="https://www.instagram.com/fotolots/" target="_blank">&#64;fotolots</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <mat-icon>storefront</mat-icon>
-          <div class="contact-details">
-            <h3>Ondernemingsnummer</h3>
-            <p>BE 1013.104.028</p>
-          </div>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
 </section>
