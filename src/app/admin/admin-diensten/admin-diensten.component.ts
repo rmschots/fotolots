@@ -20,7 +20,8 @@ type DienstenPageForm = {
   selector: 'app-admin-diensten',
   templateUrl: './admin-diensten.component.html',
   styleUrl: './admin-diensten.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminDienstenComponent extends BaseAdminComponent<DienstenPage, DienstenPageForm> {
   #dialog: MatDialog = inject(MatDialog);
@@ -91,13 +92,13 @@ export class AdminDienstenComponent extends BaseAdminComponent<DienstenPage, Die
   }
 
   generateUrlSmall(imageId: string) {
-      return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/diensten%2Fresized%2F${imageId}_150x150.avif?alt=media`;
+    return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/diensten%2Fresized%2F${imageId}_150x150.avif?alt=media`;
 
   }
 
   getAlternativePicture(event: ErrorEvent) {
     const errorImage = '/assets/processing.png';
-    if((event.target as HTMLImageElement).src !== errorImage) {
+    if ((event.target as HTMLImageElement).src !== errorImage) {
       (event.target as HTMLImageElement).src = errorImage;
     }
   }

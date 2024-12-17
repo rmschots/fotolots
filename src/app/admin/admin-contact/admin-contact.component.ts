@@ -11,7 +11,8 @@ type ContactPageForm = {
   selector: 'app-admin-contact',
   templateUrl: './admin-contact.component.html',
   styleUrl: './admin-contact.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminContactComponent extends BaseAdminComponent<ContactPage, ContactPageForm> {
   override prepareFormGroupForData(data: ContactPage): void {

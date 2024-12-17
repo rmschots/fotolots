@@ -18,7 +18,8 @@ type HomePageForm = {
   selector: 'app-admin-home',
   templateUrl: './admin-home.component.html',
   styleUrl: './admin-home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminHomeComponent extends BaseAdminComponent<HomePage, HomePageForm> {
   #dialog: MatDialog = inject(MatDialog);

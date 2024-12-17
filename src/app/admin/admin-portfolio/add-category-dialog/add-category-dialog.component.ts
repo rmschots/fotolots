@@ -5,7 +5,8 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-add-category-dialog',
   templateUrl: './add-category-dialog.component.html',
-  styleUrl: './add-category-dialog.component.scss'
+  styleUrl: './add-category-dialog.component.scss',
+  standalone: false
 })
 export class AddCategoryDialogComponent {
   categoryNameControl = new FormControl('', {nonNullable: true});

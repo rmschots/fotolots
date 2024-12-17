@@ -6,7 +6,8 @@ import { ContactPage } from '../../shared/page';
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ContactComponent {
   #pageService: PageService = inject(PageService);

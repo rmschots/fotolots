@@ -1,12 +1,21 @@
-import { ChangeDetectionStrategy, Component, computed, HostListener, signal, WritableSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  HostListener,
+  OnInit,
+  signal,
+  WritableSignal
+} from '@angular/core';
 
 @Component({
   selector: 'app-public',
   templateUrl: './public.component.html',
   styleUrl: './public.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
-export class PublicComponent {
+export class PublicComponent implements OnInit {
   screenWidth: WritableSignal<number> = signal(window.innerWidth);
   isMobile = computed(() => this.screenWidth() < 1024);
 

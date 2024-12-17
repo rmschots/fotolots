@@ -6,7 +6,8 @@ import { OverMijPage } from '../../shared/page';
   selector: 'app-over-mij',
   templateUrl: './over-mij.component.html',
   styleUrl: './over-mij.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class OverMijComponent {
   #pageService: PageService = inject(PageService);

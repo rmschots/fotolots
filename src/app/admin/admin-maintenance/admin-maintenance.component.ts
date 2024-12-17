@@ -11,7 +11,8 @@ const RESOLUTIONS = ['150x150', '600x900', '1920x1920', '5000x5000'];
   selector: 'app-admin-maintenance',
   templateUrl: './admin-maintenance.component.html',
   styleUrl: './admin-maintenance.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminMaintenanceComponent {
   #adminPageService: AdminPageService = inject(AdminPageService);

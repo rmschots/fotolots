@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, inject
   selector: 'app-optimized-image',
   templateUrl: './optimized-image.component.html',
   styleUrl: './optimized-image.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class OptimizedImageComponent {
   #cdr = inject(ChangeDetectorRef);

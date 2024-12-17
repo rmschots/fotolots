@@ -6,7 +6,8 @@ import { DienstenPage } from '../../shared/page';
   selector: 'app-diensten',
   templateUrl: './diensten.component.html',
   styleUrl: './diensten.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class DienstenComponent {
   #pageService: PageService = inject(PageService);

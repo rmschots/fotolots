@@ -6,7 +6,8 @@ import { HomePage } from '../../shared/page';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HomeComponent {
   @ViewChild('dienstenSection') dienstenSection!: ElementRef;

@@ -14,7 +14,8 @@ type OverMijPageForm = {
   selector: 'app-admin-over-mij',
   templateUrl: './admin-over-mij.component.html',
   styleUrl: './admin-over-mij.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminOverMijComponent extends BaseAdminComponent<OverMijPage, OverMijPageForm> {
   #dialog: MatDialog = inject(MatDialog);
@@ -58,7 +59,7 @@ export class AdminOverMijComponent extends BaseAdminComponent<OverMijPage, OverM
 
   getAlternativePicture(event: ErrorEvent) {
     const errorImage = '/assets/processing.png';
-    if((event.target as HTMLImageElement).src !== errorImage) {
+    if ((event.target as HTMLImageElement).src !== errorImage) {
       (event.target as HTMLImageElement).src = errorImage;
     }
   }

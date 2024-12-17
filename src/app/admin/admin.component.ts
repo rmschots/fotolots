@@ -7,7 +7,8 @@ import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.scss'
+  styleUrl: './admin.component.scss',
+  standalone: false
 })
 export class AdminComponent implements OnInit {
   #auth: Auth = inject(Auth);

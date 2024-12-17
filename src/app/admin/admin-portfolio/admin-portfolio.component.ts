@@ -28,7 +28,8 @@ type PictureForm = {
   selector: 'app-admin-portfolio',
   templateUrl: './admin-portfolio.component.html',
   styleUrl: './admin-portfolio.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AdminPortfolioComponent extends BaseAdminComponent<PortfolioPage, PortfolioPageForm> {
   #dialog: MatDialog = inject(MatDialog);
