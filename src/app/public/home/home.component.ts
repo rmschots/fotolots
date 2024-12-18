@@ -11,12 +11,8 @@ import { HomePage } from '../../shared/page';
 })
 export class HomeComponent {
   @ViewChild('dienstenSection') dienstenSection!: ElementRef;
-  #pageService: PageService = inject(PageService);
+  readonly #pageService: PageService = inject(PageService);
   pageData$ = this.#pageService.readPageData<HomePage>('home');
-
-  scrollToDiensten() {
-    this.dienstenSection.nativeElement.scrollIntoView({behavior: 'smooth'});
-  }
 
   generateUrlMedium(imageId: string) {
     return `https://firebasestorage.googleapis.com/v0/b/fotolots.appspot.com/o/home%2Fdiensten%2Fresized%2F${imageId}_600x900.avif?alt=media`;
