@@ -3,7 +3,6 @@
 </div>
 
 <section #dienstenSection id="diensten-section">
-  <h3>Mijn diensten</h3>
   @if (pageData$ | async; as pageData) {
     <div class="diensten-list">
       @for (dienst of pageData.diensten; track dienst.category) {
